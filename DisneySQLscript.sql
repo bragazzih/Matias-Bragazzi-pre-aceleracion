@@ -1,0 +1,3 @@
+CREATE TABLE Personaje ( IDpersonaje BIGINT PRIMARY KEY,Imagen varchar(100), Nombre varchar(100),  Edad INT, Peso INT, Historia varchar (100), Peliculas_asociadas varchar(100));
+CREATE TABLE Pelicula ( IDpelicula BIGINT PRIMARY KEY,Imagen varchar(100), Titulo varchar(100),  Fecha_creacion DATE, Calificacion INT, Personajes_asociados varchar(100));
+CREATE TABLE Genero ( IDgenero BIGINT PRIMARY KEY, Nombre varchar(100), Imagen varchar(100), Peliculas_series_asociadas varchar(100));
