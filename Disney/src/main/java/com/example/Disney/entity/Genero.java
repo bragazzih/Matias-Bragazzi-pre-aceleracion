@@ -24,6 +24,7 @@ public class Genero implements Serializable {
 	private String Nombre;
 	
 	private Long PeliculasAsociadas;
+	
 
 	public String getImagen() {
 		return Imagen;
