@@ -2,9 +2,13 @@ package com.example.Disney.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -15,6 +19,18 @@ public class Personaje implements Serializable {
 
 
 	private static final long serialVersionUID = -4465621914197182483L;
+	
+
+	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, Long peliculasAsociadas) {
+		super();
+		Imagen = imagen;
+		Nombre = nombre;
+		Edad = edad;
+		Peso = peso;
+		Historia = historia;
+		PeliculasAsociadas = peliculasAsociadas;
+
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +40,15 @@ public class Personaje implements Serializable {
 	
 	private String Nombre;
 	
-	private  Integer Edad;
+	private  Long Edad;
 	
-	private Integer Peso;
+	private Long Peso;
 	
-	private Long Historia;
+	private String Historia;
 	
 	private Long PeliculasAsociadas;
 
+	@Column(name="Imagen")
 	public String getImagen() {
 		return Imagen;
 	}
@@ -40,6 +57,7 @@ public class Personaje implements Serializable {
 		Imagen = imagen;
 	}
 
+	@Column(name="Nombre")
 	public String getNombre() {
 		return Nombre;
 	}
@@ -48,30 +66,35 @@ public class Personaje implements Serializable {
 		Nombre = nombre;
 	}
 
-	public Integer getEdad() {
+	@Column(name="Edad")
+	public Long getEdad() {
 		return Edad;
 	}
 
-	public void setEdad(Integer edad) {
+	public void setEdad(Long edad) {
 		Edad = edad;
 	}
 
-	public Integer getPeso() {
+	@Column(name="Peso")
+	public Long getPeso() {
 		return Peso;
 	}
 
-	public void setPeso(Integer peso) {
+	public void setPeso(Long peso) {
 		Peso = peso;
 	}
 
-	public Long getHistoria() {
+	@Column(name="Historia")
+	public String getHistoria() {
 		return Historia;
 	}
 
-	public void setHistoria(Long historia) {
+	public void setHistoria(String historia) {
 		Historia = historia;
 	}
 
+	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
+	@JoinColumn(name= "id_pelicula", nullable= false)
 	public Long getPeliculasAsociadas() {
 		return PeliculasAsociadas;
 	}
