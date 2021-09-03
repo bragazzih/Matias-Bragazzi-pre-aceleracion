@@ -1,6 +1,8 @@
 package com.example.Disney.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ElementCollection;
 
 @Entity
 @Table(name = "Genero")
@@ -19,7 +22,7 @@ public class Genero implements Serializable {
 	
 	private static final long serialVersionUID = 5264086901345824349L;
 	
-	public Genero(String imagen, String nombre, Long peliculasSeriesAsociadas) {
+	public Genero(String imagen, String nombre, Set<Pelicula>peliculasSeriesAsociadas) {
 		super();
 		Imagen = imagen;
 		Nombre = nombre;
@@ -34,9 +37,10 @@ public class Genero implements Serializable {
 	
 	private String Nombre;
 	
-	private Long PeliculasSeriesAsociadas;
+	@OneToMany(mappedBy ="Genero")
+	private Set<Pelicula>PeliculasSeriesAsociadas;
 	
-	
+
 	public Long getIDgenero() {
 		return IDgenero;
 	}
@@ -64,17 +68,13 @@ public class Genero implements Serializable {
 		Nombre = nombre;
 	}
 	
-	@OneToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
-	@JoinColumn(name= "id_pelicula", nullable= false)
-	public Long getPeliculasSeriesAsociadas() {
+	public Set<Pelicula> getPeliculasSeriesAsociadas() {
 		return PeliculasSeriesAsociadas;
 	}
 
-	public void setPeliculasSeriesAsociadas(Long peliculasSeriesAsociadas) {
+	public void setPeliculasSeriesAsociadas(Set<Pelicula> peliculasSeriesAsociadas) {
 		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
 	}
-
-
 
 
 }

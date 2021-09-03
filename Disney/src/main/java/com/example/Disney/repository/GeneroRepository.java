@@ -10,5 +10,5 @@ import com.example.Disney.entity.Pelicula;
 @Repository
 
 public interface GeneroRepository extends JpaRepository<Genero, Long> {
-
+	
 }
