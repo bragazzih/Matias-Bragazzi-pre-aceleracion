@@ -2,9 +2,13 @@ package com.example.Disney.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -14,17 +18,35 @@ import javax.persistence.GenerationType;
 public class Genero implements Serializable {
 	
 	private static final long serialVersionUID = 5264086901345824349L;
+	
+	public Genero(String imagen, String nombre, Long peliculasSeriesAsociadas) {
+		super();
+		Imagen = imagen;
+		Nombre = nombre;
+		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IDgenero;
-	
+
 	private String Imagen;
 	
 	private String Nombre;
 	
-	private Long PeliculasAsociadas;
+	private Long PeliculasSeriesAsociadas;
 	
+	
+	public Long getIDgenero() {
+		return IDgenero;
+	}
+
+	public void setIDgenero(Long iDgenero) {
+		IDgenero = iDgenero;
+	}
+
+	
+	@Column(name="Imagen")
 	public String getImagen() {
 		return Imagen;
 	}
@@ -33,6 +55,7 @@ public class Genero implements Serializable {
 		Imagen = imagen;
 	}
 
+	@Column(name="Nombre")
 	public String getNombre() {
 		return Nombre;
 	}
@@ -40,14 +63,18 @@ public class Genero implements Serializable {
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
-
-	public Long getPeliculasAsociadas() {
-		return PeliculasAsociadas;
+	
+	@OneToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
+	@JoinColumn(name= "id_pelicula", nullable= false)
+	public Long getPeliculasSeriesAsociadas() {
+		return PeliculasSeriesAsociadas;
 	}
 
-	public void setPeliculasAsociadas(Long peliculasAsociadas) {
-		PeliculasAsociadas = peliculasAsociadas;
+	public void setPeliculasSeriesAsociadas(Long peliculasSeriesAsociadas) {
+		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
 	}
+
+
 
 
 }

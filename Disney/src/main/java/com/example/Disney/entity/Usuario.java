@@ -32,7 +32,6 @@ public class Usuario implements Serializable, UserDetails {
 	
 	private String password;
 	
-	
 	public Usuario(String usuario) {
 		
 		this.usuario = usuario;
