@@ -16,7 +16,7 @@ public class PeliculaBuilder {
 	private String Titulo;
 	
 	private String FechaCreacion;
-	
+	/*
 	public PeliculaBuilder whithPeliculaDto(PeliculaDto PeliculaDto) {
 		this.IDpelicula = PeliculaDto.getIDpelicula();
 	    this.Calificacion = PeliculaDto.getCalificacion();
@@ -31,6 +31,7 @@ public class PeliculaBuilder {
 		return new Pelicula(this.Imagen, this.Titulo, this.FechaCreacion, this.Calificacion, this.PersonajesAsocidados);
 		
 	}
+	*/
 }
 
 

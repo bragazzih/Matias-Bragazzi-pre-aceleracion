@@ -16,6 +16,7 @@ public class PersonajeBuilder {
 	
 	private Long PeliculasAsociadas;
 	
+	/*
 	public PersonajeBuilder withPersonajeDto(PersonajeDto PersonajeDto) {
 		this.Nombre = PersonajeDto.getNombre();
 		this.Edad = PersonajeDto.getEdad();
@@ -33,4 +34,5 @@ public class PersonajeBuilder {
 	
 
 }
+*/
 }

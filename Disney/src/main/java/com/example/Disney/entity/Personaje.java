@@ -1,6 +1,8 @@
 package com.example.Disney.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ElementCollection;
 
 @Entity
 @Table(name = "Personaje")
@@ -21,7 +24,7 @@ public class Personaje implements Serializable {
 	private static final long serialVersionUID = -4465621914197182483L;
 	
 
-	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, Long peliculasAsociadas) {
+	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, Set<Pelicula> peliculasAsociadas) {
 		super();
 		Imagen = imagen;
 		Nombre = nombre;
@@ -46,7 +49,8 @@ public class Personaje implements Serializable {
 	
 	private String Historia;
 	
-	private Long PeliculasAsociadas;
+	@ManyToMany(mappedBy = "PersonajesAsocidados")
+	private Set<Pelicula>PeliculasAsociadas;
 
 	@Column(name="Imagen")
 	public String getImagen() {
@@ -93,15 +97,15 @@ public class Personaje implements Serializable {
 		Historia = historia;
 	}
 
-	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
-	@JoinColumn(name= "id_pelicula", nullable= false)
-	public Long getPeliculasAsociadas() {
+	
+	public Set<Pelicula> getPeliculasAsociadas() {
 		return PeliculasAsociadas;
 	}
 
-	public void setPeliculasAsociadas(Long peliculasAsociadas) {
+	public void setPeliculasAsociadas(Set<Pelicula> peliculasAsociadas) {
 		PeliculasAsociadas = peliculasAsociadas;
 	}
-	
+
+
 
 }

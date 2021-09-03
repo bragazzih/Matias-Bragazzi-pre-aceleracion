@@ -28,6 +28,7 @@ public class GeneroServiceImpl implements GeneroService {
 	@Autowired
 	private PeliculaRepository peliculaRepository;
 	
+	/*
 
 	@Override
 	public Genero saveGenero(GeneroDto generoDto) {
@@ -41,6 +42,7 @@ public class GeneroServiceImpl implements GeneroService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	*/
 
 	@Override
 	public Genero update(Long id, GeneroDto generoDto) {
@@ -52,6 +54,18 @@ public class GeneroServiceImpl implements GeneroService {
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Genero saveGenero(GeneroDto generoDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Genero> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

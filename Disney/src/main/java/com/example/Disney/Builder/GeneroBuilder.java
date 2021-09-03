@@ -9,7 +9,7 @@ public class GeneroBuilder {
 	private String Nombre;
 	
 	private Long PeliculasSeriesAsociadas;
-	
+	/*
 
 	public GeneroBuilder withGeneroDto(GeneroDto GeneroDto) {
 		this.Imagen = GeneroDto.getImagen();
@@ -22,7 +22,7 @@ public Genero build () {
 	return new Genero(this.Imagen,this.Nombre,this.PeliculasSeriesAsociadas);
 	
 }
-		
+		*/
 		
 	}
 

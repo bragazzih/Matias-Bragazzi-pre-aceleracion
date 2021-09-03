@@ -1,6 +1,8 @@
 package com.example.Disney.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,9 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ElementCollection;
 
 @Entity
 @Table (name = "Peliculas")
@@ -21,7 +26,7 @@ public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 730656414716250101L;
 
 public Pelicula(String imagen, String titulo, String fechaCreacion, Long calificacion,
-			Long personajesAsocidados) {
+			Set<Personaje> personajesAsocidados) {
 		super();
 		Imagen = imagen;
 		Titulo = titulo;
@@ -34,10 +39,6 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IDpelicula;
 
-public Pelicula(Long personajesAsocidados) {
-	super();
-	PersonajesAsocidados = personajesAsocidados;
-}
 
 @Column(length = 100)
 	private String Imagen;
@@ -48,7 +49,15 @@ public Pelicula(Long personajesAsocidados) {
 	
 	private Long Calificacion;
 	
-	private Long PersonajesAsocidados;
+	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
+	@JoinTable(name= "PeliculasPersonajes", joinColumns = @JoinColumn(name = "id_pelicula"), 
+			  inverseJoinColumns = @JoinColumn(name = "id_personaje"))
+	
+	private Set<Personaje>PersonajesAsocidados;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_genero", nullable= false)
+	private Genero Genero;
 	
 	public Long getIDpelicula() {
 		return IDpelicula;
@@ -76,13 +85,11 @@ public Pelicula(Long personajesAsocidados) {
 		FechaCreacion = fechaCreacion;
 	}
 
-	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Personaje.class)
-	@JoinColumn(name= "id_personaje", nullable= false)
-	public Long getPersonajesAsocidados() {
+	public Set<Personaje> getPersonajesAsocidados() {
 		return PersonajesAsocidados;
 	}
 
-	public void setPersonajes_asocidados(Long personajesAsocidados) {
+	public void setPersonajesAsocidados(Set<Personaje> personajesAsocidados) {
 		PersonajesAsocidados = personajesAsocidados;
 	}
 
@@ -94,6 +101,16 @@ public Pelicula(Long personajesAsocidados) {
 	public void setCalificacion(Long calificacion) {
 		Calificacion = calificacion;
 	}
+
+	public Genero getGenero() {
+		return Genero;
+	}
+
+	public void setGenero(Genero genero) {
+		Genero = genero;
+	}
+
+
 	
 	
 	
