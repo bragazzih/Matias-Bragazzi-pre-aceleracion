@@ -1,5 +1,10 @@
 package com.example.Disney.dto;
 
+import java.util.List;
+import java.util.Set;
+
+import com.example.Disney.entity.Pelicula;
+
 public class GeneroDto {
 	private Long IDgenero;
 
@@ -7,7 +12,7 @@ public class GeneroDto {
 	
 	private String Nombre;
 	
-	private Long PeliculasSeriesAsociadas;
+	private List<Pelicula> PeliculasSeriesAsociadas;
 
 	public Long getIDgenero() {
 		return IDgenero;
@@ -33,11 +38,11 @@ public class GeneroDto {
 		this.Nombre = nombre;
 	}
 
-	public Long getPeliculasSeriesAsociadas() {
+	public List<Pelicula> getPeliculasSeriesAsociadas() {
 		return PeliculasSeriesAsociadas;
 	}
 
-	public void setPeliculasSeriesAsociadas(Long peliculasSeriesAsociadas) {
+	public void setPeliculasSeriesAsociadas(List<Pelicula> peliculasSeriesAsociadas) {
 		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
 	}
 

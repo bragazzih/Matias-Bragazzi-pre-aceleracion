@@ -24,7 +24,7 @@ public class Personaje implements Serializable {
 	private static final long serialVersionUID = -4465621914197182483L;
 	
 
-	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, Set<Pelicula> peliculasAsociadas) {
+	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, List<Pelicula> peliculasAsociadas) {
 		super();
 		Imagen = imagen;
 		Nombre = nombre;
@@ -50,7 +50,7 @@ public class Personaje implements Serializable {
 	private String Historia;
 	
 	@ManyToMany(mappedBy = "PersonajesAsocidados")
-	private Set<Pelicula>PeliculasAsociadas;
+	private List<Pelicula>PeliculasAsociadas;
 
 	@Column(name="Imagen")
 	public String getImagen() {
@@ -98,11 +98,11 @@ public class Personaje implements Serializable {
 	}
 
 	
-	public Set<Pelicula> getPeliculasAsociadas() {
+	public List<Pelicula> getPeliculasAsociadas() {
 		return PeliculasAsociadas;
 	}
 
-	public void setPeliculasAsociadas(Set<Pelicula> peliculasAsociadas) {
+	public void setPeliculasAsociadas(List<Pelicula> peliculasAsociadas) {
 		PeliculasAsociadas = peliculasAsociadas;
 	}
 

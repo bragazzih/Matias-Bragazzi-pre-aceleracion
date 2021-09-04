@@ -20,9 +20,13 @@ import javax.persistence.ElementCollection;
 
 public class Genero implements Serializable {
 	
+	public Genero() {
+		super();
+	}
+
 	private static final long serialVersionUID = 5264086901345824349L;
 	
-	public Genero(String imagen, String nombre, Set<Pelicula>peliculasSeriesAsociadas) {
+	public Genero(String imagen, String nombre, List<Pelicula>peliculasSeriesAsociadas) {
 		super();
 		Imagen = imagen;
 		Nombre = nombre;
@@ -38,7 +42,7 @@ public class Genero implements Serializable {
 	private String Nombre;
 	
 	@OneToMany(mappedBy ="Genero")
-	private Set<Pelicula>PeliculasSeriesAsociadas;
+	private List<Pelicula>PeliculasSeriesAsociadas;
 	
 
 	public Long getIDgenero() {
@@ -68,11 +72,11 @@ public class Genero implements Serializable {
 		Nombre = nombre;
 	}
 	
-	public Set<Pelicula> getPeliculasSeriesAsociadas() {
+	public List<Pelicula> getPeliculasSeriesAsociadas() {
 		return PeliculasSeriesAsociadas;
 	}
 
-	public void setPeliculasSeriesAsociadas(Set<Pelicula> peliculasSeriesAsociadas) {
+	public void setPeliculasSeriesAsociadas(List<Pelicula> peliculasSeriesAsociadas) {
 		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
 	}
 

@@ -9,7 +9,7 @@ import com.example.Disney.dto.GeneroDto;
 import com.example.Disney.entity.Genero;
 import com.example.Disney.repository.GeneroRepository;
 import com.example.Disney.repository.PeliculaRepository;
-import com.example.Disney.service.GeneroService;
+import com.example.Disney.service.IGeneroService;
 import com.example.Disney.entity.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -20,7 +20,7 @@ import javax.persistence.Id;
 
 
 @Repository
-public class GeneroServiceImpl implements GeneroService {
+public class GeneroServiceImpl implements IGeneroService {
 	
 	@Autowired
 	private GeneroRepository generoRepository;
@@ -28,25 +28,23 @@ public class GeneroServiceImpl implements GeneroService {
 	@Autowired
 	private PeliculaRepository peliculaRepository;
 	
-	/*
+	
 
 	@Override
 	public Genero saveGenero(GeneroDto generoDto) {
 		Genero newGenero= new GeneroBuilder().withGeneroDto(generoDto).build();
-		newGenero.setPeliculasSeriesAsociadas(peliculaRepository.findById((long)generoDto.getPeliculasSeriesAsociadas()).get() );
+		newGenero.setPeliculasSeriesAsociadas((peliculaRepository.findAll()));
 		return generoRepository.save(newGenero); 
 	}
 
 	@Override
 	public List<Genero> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return generoRepository.findAll();
 	}
-	*/
 
 	@Override
 	public Genero update(Long id, GeneroDto generoDto) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -56,16 +54,5 @@ public class GeneroServiceImpl implements GeneroService {
 		
 	}
 
-	@Override
-	public Genero saveGenero(GeneroDto generoDto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Genero> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

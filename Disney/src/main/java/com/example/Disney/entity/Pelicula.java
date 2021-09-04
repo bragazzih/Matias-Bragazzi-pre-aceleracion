@@ -26,7 +26,7 @@ public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 730656414716250101L;
 
 public Pelicula(String imagen, String titulo, String fechaCreacion, Long calificacion,
-			Set<Personaje> personajesAsocidados) {
+		List<Personaje> personajesAsocidados) {
 		super();
 		Imagen = imagen;
 		Titulo = titulo;
@@ -53,7 +53,7 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 	@JoinTable(name= "PeliculasPersonajes", joinColumns = @JoinColumn(name = "id_pelicula"), 
 			  inverseJoinColumns = @JoinColumn(name = "id_personaje"))
 	
-	private Set<Personaje>PersonajesAsocidados;
+	private List<Personaje>PersonajesAsocidados;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_genero", nullable= false)
@@ -85,11 +85,11 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 		FechaCreacion = fechaCreacion;
 	}
 
-	public Set<Personaje> getPersonajesAsocidados() {
+	public List<Personaje> getPersonajesAsocidados() {
 		return PersonajesAsocidados;
 	}
 
-	public void setPersonajesAsocidados(Set<Personaje> personajesAsocidados) {
+	public void setPersonajesAsocidados(List<Personaje> personajesAsocidados) {
 		PersonajesAsocidados = personajesAsocidados;
 	}
 

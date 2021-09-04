@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Personaje;
-import com.example.Disney.service.PersonajeService;
+import com.example.Disney.service.IPersonajeService;
 
-public class PersonajeServiceImpl implements PersonajeService {
+public class PersonajeServiceImpl implements IPersonajeService {
 
 	@Override
 	public Personaje savePelicula(PersonajeDto peliculaDto) {
