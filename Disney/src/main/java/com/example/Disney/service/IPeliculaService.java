@@ -7,7 +7,7 @@ import com.example.Disney.entity.Pelicula;
 
 public interface IPeliculaService {
 public Pelicula savePelicula(PeliculaDto peliculaDto);
-public List<Pelicula>findAll();
+public List<PeliculaDto>findAll();
 public Pelicula update(Long id, PeliculaDto PeliculaDto);
 public void delete (Long id);
 	

@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.entity.Pelicula;
 import com.example.Disney.service.IPeliculaService;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @RestController
-@RequestMapping("/pelicula")
+@RequestMapping("/movies")
 @CrossOrigin("*")
+
+
 public class PeliculaController {
 	
 

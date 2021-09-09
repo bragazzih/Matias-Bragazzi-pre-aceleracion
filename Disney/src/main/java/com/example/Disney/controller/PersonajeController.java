@@ -18,7 +18,7 @@ import com.example.Disney.entity.Personaje;
 import com.example.Disney.service.IPersonajeService;
 
 @RestController
-@RequestMapping("/personaje")
+@RequestMapping("/characters")
 @CrossOrigin("*")
 public class PersonajeController {
 	

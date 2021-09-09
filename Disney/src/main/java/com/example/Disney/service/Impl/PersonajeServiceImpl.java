@@ -1,5 +1,6 @@
 package com.example.Disney.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.Disney.Builder.PeliculaBuilder;
 import com.example.Disney.Builder.PersonajeBuilder;
+import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Pelicula;
@@ -34,10 +36,21 @@ public class PersonajeServiceImpl implements IPersonajeService {
 	}
 
 	@Override
-    public List<Personaje> findAll(){
-		return personajeRepository.findAll();	
+    public List<PersonajeDto> findAll(){
+		List<Personaje> lstPersonajes = personajeRepository.findAll();
+		ArrayList<PersonajeDto> lstPersonajesDto = new ArrayList<PersonajeDto> ();
+		    for(Personaje pertmp :  lstPersonajes)
+		    {
+		    	PersonajeDto perDto = new PersonajeDto();
+		        perDto.setNombre(pertmp.getNombre());
+		        perDto.setImagen(pertmp.getImagen());
+		        
+		        lstPersonajesDto.add(perDto);
+		    }
+			return lstPersonajesDto;
+		}
 		
-	}
+	
 	
 
 	@Override

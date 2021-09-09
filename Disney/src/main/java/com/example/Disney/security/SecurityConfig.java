@@ -31,18 +31,18 @@ UserDetailsService userDetailsService;
 @Override
 public void configure(WebSecurity web) throws Exception {
     web.ignoring().antMatchers("/genero");
-    web.ignoring().antMatchers("/pelicula");
-    web.ignoring().antMatchers("/personaje");
+    web.ignoring().antMatchers("/movies");
+    web.ignoring().antMatchers("/characters");
     web.ignoring().antMatchers("/genero/**");
-    web.ignoring().antMatchers("/pelicula/**");
-    web.ignoring().antMatchers("/personaje/**");
+    web.ignoring().antMatchers("/movies/**");
+    web.ignoring().antMatchers("/characters/**");
 }
 
 @Override
 protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.authorizeRequests().antMatchers("/genero").permitAll();
-    httpSecurity.authorizeRequests().antMatchers("/pelicula").permitAll();
-    httpSecurity.authorizeRequests().antMatchers("/personaje").permitAll();
+    httpSecurity.authorizeRequests().antMatchers("/movies").permitAll();
+    httpSecurity.authorizeRequests().antMatchers("/characters").permitAll();
 }
 
 

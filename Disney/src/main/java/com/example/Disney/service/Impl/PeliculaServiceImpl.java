@@ -1,5 +1,6 @@
 package com.example.Disney.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import com.example.Disney.repository.GeneroRepository;
 import com.example.Disney.repository.PeliculaRepository;
 import com.example.Disney.repository.PersonajeRepository;
 import com.example.Disney.service.IPeliculaService;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Repository
 public class PeliculaServiceImpl implements IPeliculaService{
@@ -27,6 +30,7 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	@Autowired
 	private PersonajeRepository personajeRepository;
 	
+	
 
 	@Override
 	public Pelicula savePelicula(PeliculaDto peliculaDto) {
@@ -36,10 +40,21 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	}
 
 	@Override
-    public List<Pelicula> findAll(){
-		return peliculaRepository.findAll();	
+    public List<PeliculaDto> findAll(){
+			List<Pelicula> lstPeliculas = peliculaRepository.findAll();
+			ArrayList<PeliculaDto> lstPeliculasDto = new ArrayList<PeliculaDto> ();
+			    for(Pelicula pelitmp :  lstPeliculas)
+			    {
+			    	PeliculaDto pelDto = new PeliculaDto();
+			        pelDto.setTitulo(pelitmp.getTitulo());
+			        pelDto.setImagen(pelitmp.getImagen());
+			        pelDto.setFechaCreacion(pelitmp.getFechaCreacion());
+			        
+			        lstPeliculasDto.add(pelDto);
+			    }
+				return lstPeliculasDto;
+			}
 		
-	}
 	
 
 	@Override
