@@ -7,7 +7,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,17 +28,22 @@ import javax.persistence.ElementCollection;
 
 public class Pelicula implements Serializable {
 	
+	public Pelicula() {
+		super();
+	}
+
 	private static final long serialVersionUID = 730656414716250101L;
 
 public Pelicula(String imagen, String titulo, String fechaCreacion, Long calificacion,
-		List<Personaje> personajesAsocidados) {
+		List<Personaje> personajesAsociados) {
 		super();
 		Imagen = imagen;
 		Titulo = titulo;
 		FechaCreacion = fechaCreacion;
 		Calificacion = calificacion;
-		PersonajesAsocidados = personajesAsocidados;
+		PersonajesAsociados = personajesAsociados;
 	}
+
 
 @Id 
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,20 +53,30 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 @Column(length = 100)
 	private String Imagen;
 
+	public String getImagen() {
+	return Imagen;
+}
+
+public void setImagen(String imagen) {
+	Imagen = imagen;
+}
+
 	private String Titulo;
-	
+
 	private String FechaCreacion;
 	
 	private Long Calificacion;
 	
-	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
-	@JoinTable(name= "PeliculasPersonajes", joinColumns = @JoinColumn(name = "id_pelicula"), 
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+	@JoinTable(name= "Peliculas_personajes", joinColumns = @JoinColumn(name = "id_pelicula"), 
 			  inverseJoinColumns = @JoinColumn(name = "id_personaje"))
+	private List<Personaje>PersonajesAsociados; 
 	
-	private List<Personaje>PersonajesAsocidados;
-	
+    
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "id_genero", nullable= false)
+	@JoinColumn(name = "id_genero", nullable = false)
 	private Genero Genero;
 	
 	public Long getIDpelicula() {
@@ -67,7 +87,6 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 		IDpelicula = iDpelicula;
 	}
 	
-	@Column(name="Titulo")
 	public String getTitulo() {
 		return Titulo;
 	}
@@ -76,7 +95,6 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 		Titulo = titulo;
 	}
 
-	@Column(name="Fecha_creacion")
 	public String getFechaCreacion() {
 		return FechaCreacion;
 	}
@@ -85,15 +103,14 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 		FechaCreacion = fechaCreacion;
 	}
 
-	public List<Personaje> getPersonajesAsocidados() {
-		return PersonajesAsocidados;
+	public List<Personaje> getPersonajesAsociados() {
+		return PersonajesAsociados;
 	}
 
-	public void setPersonajesAsocidados(List<Personaje> personajesAsocidados) {
-		PersonajesAsocidados = personajesAsocidados;
+	public void setPersonajesAsociados(List<Personaje> personajesAsociados) {
+		PersonajesAsociados = personajesAsociados;
 	}
 
-	@Column(name="Calificacion")
 	public Long getCalificacion() {
 		return Calificacion;
 	}
@@ -102,18 +119,8 @@ public Pelicula(String imagen, String titulo, String fechaCreacion, Long calific
 		Calificacion = calificacion;
 	}
 
-	public Genero getGenero() {
-		return Genero;
-	}
-
-	public void setGenero(Genero genero) {
-		Genero = genero;
-	}
-
 
 	
-	
-	
-	
+
 
 }

@@ -8,6 +8,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -36,13 +39,16 @@ public class Genero implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IDgenero;
-
+	
 	private String Imagen;
 	
 	private String Nombre;
-	
+
 	@OneToMany(mappedBy ="Genero")
-	private List<Pelicula>PeliculasSeriesAsociadas;
+	@JsonIgnore
+	private List<Pelicula>PeliculasSeriesAsociadas;	
+	
+
 	
 
 	public Long getIDgenero() {
@@ -54,7 +60,6 @@ public class Genero implements Serializable {
 	}
 
 	
-	@Column(name="Imagen")
 	public String getImagen() {
 		return Imagen;
 	}
@@ -63,7 +68,6 @@ public class Genero implements Serializable {
 		Imagen = imagen;
 	}
 
-	@Column(name="Nombre")
 	public String getNombre() {
 		return Nombre;
 	}

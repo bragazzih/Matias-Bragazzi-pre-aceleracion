@@ -6,9 +6,9 @@ import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Personaje;
 
 public interface IPersonajeService {
-public Personaje savePelicula(PersonajeDto peliculaDto);
+public Personaje savePersonaje(PersonajeDto personajeDto);
 public List<Personaje>findAll();
-public Personaje update(Long id, Personaje PeliculaDto);
+public Personaje update(Long id, PersonajeDto PersonajeDto);
 public void delete (Long id);
 	
 }

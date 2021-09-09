@@ -1,12 +1,16 @@
 package com.example.Disney.dto;
 
+import java.util.List;
+
+import com.example.Disney.entity.Personaje;
+
 public class PeliculaDto {
 	
 	private long IDpelicula;
 	
 	private Long Calificacion;
 	
-	private Long PersonajesAsocidados;
+	private List<Personaje> PersonajesAsociados;
 	
 	private String Imagen;
 
@@ -54,12 +58,12 @@ public class PeliculaDto {
 		Calificacion = calificacion;
 	}
 
-	public Long getPersonajesAsocidados() {
-		return PersonajesAsocidados;
+	public List<Personaje>getPersonajesAsociados() {
+		return PersonajesAsociados;
 	}
 
-	public void setPersonajesAsocidados(Long personajesAsocidados) {
-		PersonajesAsocidados = personajesAsocidados;
+	public void setPersonajesAsocidados( List<Personaje> personajesAsociados) {
+		PersonajesAsociados = personajesAsociados;
 	}
 
 

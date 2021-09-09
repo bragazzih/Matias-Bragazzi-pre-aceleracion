@@ -1,5 +1,8 @@
 package com.example.Disney.Builder;
+import java.util.List;
+
 import com.example.Disney.dto.PersonajeDto;
+import com.example.Disney.entity.Pelicula;
 import com.example.Disney.entity.Personaje;
 
 public class PersonajeBuilder {
@@ -14,9 +17,9 @@ public class PersonajeBuilder {
 	
 	private String Historia;
 	
-	private Long PeliculasAsociadas;
+	private List<Pelicula>PeliculasAsociadas;
 	
-	/*
+	
 	public PersonajeBuilder withPersonajeDto(PersonajeDto PersonajeDto) {
 		this.Nombre = PersonajeDto.getNombre();
 		this.Edad = PersonajeDto.getEdad();
@@ -34,5 +37,5 @@ public class PersonajeBuilder {
 	
 
 }
-*/
+
 }
