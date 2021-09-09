@@ -114,6 +114,8 @@ public void setImagen(String imagen) {
 	public Long getCalificacion() {
 		return Calificacion;
 	}
+	
+	
 
 	public void setCalificacion(Long calificacion) {
 		Calificacion = calificacion;
