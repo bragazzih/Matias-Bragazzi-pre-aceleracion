@@ -20,7 +20,7 @@ public class PersonajeBuilder {
 	private List<Pelicula>PeliculasAsociadas;
 	
 	
-	public PersonajeBuilder withPersonajeDto(PersonajeDto PersonajeDto) {
+	/* public PersonajeBuilder withPersonajeDto(PersonajeDto PersonajeDto) {
 		this.Nombre = PersonajeDto.getNombre();
 		this.Edad = PersonajeDto.getEdad();
 		this.Imagen = PersonajeDto.getImagen();
@@ -37,5 +37,9 @@ public class PersonajeBuilder {
 	
 
 }
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> stash
 }

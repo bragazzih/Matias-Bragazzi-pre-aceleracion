@@ -18,8 +18,14 @@ public class PeliculaBuilder {
 	private String Titulo;
 	
 	private String FechaCreacion;
+<<<<<<< HEAD
 	
 	public PeliculaBuilder withPeliculaDto(PeliculaDto PeliculaDto) {
+=======
+	/*
+	public PeliculaBuilder whithPeliculaDto(PeliculaDto PeliculaDto) {
+		this.IDpelicula = PeliculaDto.getIDpelicula();
+>>>>>>> stash
 	    this.Calificacion = PeliculaDto.getCalificacion();
 	    this.PersonajesAsociados = PeliculaDto.getPersonajesAsociados();
 	    this.Imagen = PeliculaDto.getImagen();
@@ -32,7 +38,11 @@ public class PeliculaBuilder {
 		return new Pelicula(this.Imagen, this.Titulo, this.FechaCreacion, this.Calificacion, this.PersonajesAsociados);
 		
 	}
+<<<<<<< HEAD
 	
+=======
+	*/
+>>>>>>> stash
 }
 
 

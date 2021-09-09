@@ -2,7 +2,10 @@ package com.example.Disney.entity;
 
 import java.io.Serializable;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Set;
+=======
+>>>>>>> stash
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -34,7 +37,11 @@ public class Personaje implements Serializable {
 	private static final long serialVersionUID = -4465621914197182483L;
 	
 
+<<<<<<< HEAD
 	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, List<Pelicula> peliculasAsociadas) {
+=======
+	public Personaje(String imagen, String nombre, Long edad, Long peso, String historia, List<Pelicula>peliculasAsociadas) {
+>>>>>>> stash
 		super();
 		Imagen = imagen;
 		Nombre = nombre;
@@ -59,10 +66,16 @@ public class Personaje implements Serializable {
 	
 	private String Historia;
 	
+<<<<<<< HEAD
 	
 	@ManyToMany(mappedBy = "PersonajesAsociados")
 	private List<Pelicula>PeliculasAsociadas;
 	
+=======
+	private List<Pelicula>PeliculasAsociadas;
+
+	@Column(name="Imagen")
+>>>>>>> stash
 	public String getImagen() {
 		return Imagen;
 	}
@@ -104,7 +117,12 @@ public class Personaje implements Serializable {
 		Historia = historia;
 	}
 
+<<<<<<< HEAD
 	
+=======
+	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
+	@JoinColumn(name= "id_pelicula", nullable= false)
+>>>>>>> stash
 	public List<Pelicula> getPeliculasAsociadas() {
 		return PeliculasAsociadas;
 	}
