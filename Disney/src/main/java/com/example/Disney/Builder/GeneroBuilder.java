@@ -1,6 +1,10 @@
 package com.example.Disney.Builder;
+import java.util.List;
+import java.util.Set;
+
 import com.example.Disney.dto.GeneroDto;
 import com.example.Disney.entity.Genero;
+import com.example.Disney.entity.Pelicula;
 
 public class GeneroBuilder {
 
@@ -8,8 +12,8 @@ public class GeneroBuilder {
 	
 	private String Nombre;
 	
-	private Long PeliculasSeriesAsociadas;
-	/*
+	private List<Pelicula>PeliculasSeriesAsociadas;
+
 
 	public GeneroBuilder withGeneroDto(GeneroDto GeneroDto) {
 		this.Imagen = GeneroDto.getImagen();
@@ -22,7 +26,7 @@ public Genero build () {
 	return new Genero(this.Imagen,this.Nombre,this.PeliculasSeriesAsociadas);
 	
 }
-		*/
+	
 		
 	}
 

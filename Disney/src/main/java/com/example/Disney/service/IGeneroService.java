@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.Disney.dto.GeneroDto;
 import com.example.Disney.entity.Genero;
 
-public interface GeneroService {
+public interface IGeneroService {
 public Genero saveGenero(GeneroDto generoDto);
 public List<Genero>findAll();
 public Genero update(Long id, GeneroDto generoDto);

@@ -9,7 +9,7 @@ import com.example.Disney.entity.Usuario;
 
 @Service
 
-public class MyUserDetailsService implements UserDetailsService {
+public class IUser implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

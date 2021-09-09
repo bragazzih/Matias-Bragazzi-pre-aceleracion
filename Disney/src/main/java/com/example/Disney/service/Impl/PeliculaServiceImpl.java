@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.entity.Pelicula;
-import com.example.Disney.service.PeliculaService;
+import com.example.Disney.service.IPeliculaService;
 
-public class PeliculaServiceImpl implements PeliculaService{
+public class PeliculaServiceImpl implements IPeliculaService{
 
 	@Override
 	public Pelicula savePelicula(PeliculaDto peliculaDto) {
