@@ -58,7 +58,7 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	
 
 	@Override
-	public Pelicula update(Long id, PeliculaDto peliculaDto) {
+	public Pelicula update(Long id, Pelicula peliculaDto) {
 		Pelicula pelicula = peliculaRepository.findById(id).get();
 		List<Personaje> personaje = personajeRepository.findAll();
 		pelicula.setImagen (peliculaDto.getImagen());
