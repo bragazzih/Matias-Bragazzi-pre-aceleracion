@@ -3,13 +3,10 @@ package com.example.Disney.dto;
 import java.util.List;
 
 import com.example.Disney.entity.Personaje;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-
-public class PeliculaDto {
+public class PeliculaGetDto  {
 	
-	private long IDpelicula;
+private long IDpelicula;
 	
 	private Long Calificacion;
 	
@@ -72,4 +69,7 @@ public class PeliculaDto {
 
 	
 	
-}
+}	
+	
+
+

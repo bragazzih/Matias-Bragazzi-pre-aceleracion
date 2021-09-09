@@ -1,5 +1,6 @@
 package com.example.Disney.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,7 @@ import com.example.Disney.repository.GeneroRepository;
 import com.example.Disney.repository.PeliculaRepository;
 import com.example.Disney.service.IGeneroService;
 import com.example.Disney.entity.Pelicula;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.example.Disney.dto.PeliculaDto;
-
-import javax.persistence.Id;
 
 
 
@@ -38,21 +35,44 @@ public class GeneroServiceImpl implements IGeneroService {
 	}
 
 	@Override
-	public List<Genero> findAll() {
-		return generoRepository.findAll();
+    public List<Genero> findAll(){
+		return generoRepository.findAll();	
+		
 	}
+	
+	/* public List<GeneroDto> findAll() {
+		List<Genero> lstGeneros = generoRepository.findAll();
+		List<GeneroDto> lstGenerosDTO = new ArrayList<GeneroDto>();
+		    for (Genero gen : lstGeneros) {
+		        
+		    	GeneroDto gener = new GeneroDto();
+		        gener.setNombre(gen.getNombre());
+		        
+		        lstGenerosDTO.add(gener);
+		    }
+			return lstGenerosDTO;
+	}
+	*/   
+		 
 
 	@Override
 	public Genero update(Long id, GeneroDto generoDto) {
+		Genero genero = generoRepository.findById(id).get();
+		List<Pelicula> pelicula = peliculaRepository.findAll();
+		genero.setImagen(generoDto.getImagen());
+		genero.setNombre(genero.getNombre());
+		genero.setPeliculasSeriesAsociadas(pelicula);
+		return generoRepository.save(genero);
 
-		return null;
+		
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		generoRepository.deleteById(id);
 		
 	}
-
-
 }
+
+
+

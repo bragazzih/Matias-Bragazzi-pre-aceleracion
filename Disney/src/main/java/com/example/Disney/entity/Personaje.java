@@ -7,9 +7,15 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +26,10 @@ import javax.persistence.ElementCollection;
 
 public class Personaje implements Serializable {
 
+
+	public Personaje() {
+		super();
+	}
 
 	private static final long serialVersionUID = -4465621914197182483L;
 	
@@ -49,10 +59,10 @@ public class Personaje implements Serializable {
 	
 	private String Historia;
 	
-	@ManyToMany(mappedBy = "PersonajesAsocidados")
+	
+	@ManyToMany(mappedBy = "PersonajesAsociados")
 	private List<Pelicula>PeliculasAsociadas;
-
-	@Column(name="Imagen")
+	
 	public String getImagen() {
 		return Imagen;
 	}
@@ -61,7 +71,6 @@ public class Personaje implements Serializable {
 		Imagen = imagen;
 	}
 
-	@Column(name="Nombre")
 	public String getNombre() {
 		return Nombre;
 	}
@@ -70,7 +79,6 @@ public class Personaje implements Serializable {
 		Nombre = nombre;
 	}
 
-	@Column(name="Edad")
 	public Long getEdad() {
 		return Edad;
 	}
@@ -79,7 +87,6 @@ public class Personaje implements Serializable {
 		Edad = edad;
 	}
 
-	@Column(name="Peso")
 	public Long getPeso() {
 		return Peso;
 	}
@@ -88,7 +95,7 @@ public class Personaje implements Serializable {
 		Peso = peso;
 	}
 
-	@Column(name="Historia")
+	
 	public String getHistoria() {
 		return Historia;
 	}
