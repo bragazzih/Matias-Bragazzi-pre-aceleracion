@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.Disney.Builder.GeneroBuilder;
 import com.example.Disney.dto.GeneroDto;
+import com.example.Disney.dto.GeneroGetDto;
+import com.example.Disney.dto.PeliculaGetDto;
 import com.example.Disney.entity.Genero;
 import com.example.Disney.repository.GeneroRepository;
 import com.example.Disney.repository.PeliculaRepository;
@@ -35,11 +37,23 @@ public class GeneroServiceImpl implements IGeneroService {
 	}
 
 	@Override
-    public List<Genero> findAll(){
-		return generoRepository.findAll();	
-		
-	}
-	
+    public List<GeneroGetDto> findAll(){
+			List<Genero> lstGeneros = generoRepository.findAll();
+			ArrayList<GeneroGetDto> lstGeneroGetDto = new ArrayList<GeneroGetDto>();
+			    for(Genero generotmp :  lstGeneros)
+			    {
+			    	GeneroGetDto genDto = new GeneroGetDto();
+			        genDto.setImagen(generotmp.getImagen());
+			        genDto.setNombre(generotmp.getNombre());
+			        
+			        
+			        
+			        lstGeneroGetDto.add(genDto);
+			    }
+			    
+			    
+				return lstGeneroGetDto;
+			}
 	/* public List<GeneroDto> findAll() {
 		List<Genero> lstGeneros = generoRepository.findAll();
 		List<GeneroDto> lstGenerosDTO = new ArrayList<GeneroDto>();

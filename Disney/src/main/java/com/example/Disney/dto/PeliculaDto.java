@@ -9,8 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class PeliculaDto {
 	
-	private long IDpelicula;
-	
 	private Long Calificacion;
 	
 	private List<Personaje> PersonajesAsociados;
@@ -21,13 +19,6 @@ public class PeliculaDto {
 	
 	private String FechaCreacion;
 	
-	public long getIDpelicula() {
-		return IDpelicula;
-	}
-
-	public void setIDpelicula(long iDpelicula) {
-		IDpelicula = iDpelicula;
-	}
 
 	public String getImagen() {
 		return Imagen;

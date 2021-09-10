@@ -10,6 +10,7 @@ import com.example.Disney.Builder.PeliculaBuilder;
 import com.example.Disney.Builder.PersonajeBuilder;
 import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.dto.PersonajeDto;
+import com.example.Disney.dto.PersonajeGetDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Pelicula;
 import com.example.Disney.entity.Personaje;
@@ -36,20 +37,19 @@ public class PersonajeServiceImpl implements IPersonajeService {
 	}
 
 	@Override
-    public List<PersonajeDto> findAll(){
+    public List<PersonajeGetDto> findAll(){
 		List<Personaje> lstPersonajes = personajeRepository.findAll();
-		ArrayList<PersonajeDto> lstPersonajesDto = new ArrayList<PersonajeDto> ();
+		ArrayList<PersonajeGetDto> lstPersonajesGetDto = new ArrayList<PersonajeGetDto> ();
 		    for(Personaje pertmp :  lstPersonajes)
 		    {
-		    	PersonajeDto perDto = new PersonajeDto();
-		        perDto.setNombre(pertmp.getNombre());
-		        perDto.setImagen(pertmp.getImagen());
+		    	PersonajeGetDto perGetDto = new PersonajeGetDto();
+		        perGetDto.setNombre(pertmp.getNombre());
+		        perGetDto.setImagen(pertmp.getImagen());
 		        
-		        lstPersonajesDto.add(perDto);
+		        lstPersonajesGetDto.add(perGetDto);
 		    }
-			return lstPersonajesDto;
-		}
-		
+			return lstPersonajesGetDto;
+		}		
 	
 	
 

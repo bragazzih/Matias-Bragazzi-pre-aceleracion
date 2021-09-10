@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.example.Disney.Builder.GeneroBuilder;
 import com.example.Disney.Builder.PeliculaBuilder;
 import com.example.Disney.dto.PeliculaDto;
+import com.example.Disney.dto.PeliculaGetDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Genero;
 import com.example.Disney.entity.Pelicula;
@@ -40,12 +41,12 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	}
 
 	@Override
-    public List<PeliculaDto> findAll(){
+    public List<PeliculaGetDto> findAll(){
 			List<Pelicula> lstPeliculas = peliculaRepository.findAll();
-			ArrayList<PeliculaDto> lstPeliculasDto = new ArrayList<PeliculaDto> ();
+			ArrayList<PeliculaGetDto> lstPeliculasDto = new ArrayList<PeliculaGetDto> ();
 			    for(Pelicula pelitmp :  lstPeliculas)
 			    {
-			    	PeliculaDto pelDto = new PeliculaDto();
+			    	PeliculaGetDto pelDto = new PeliculaGetDto();
 			        pelDto.setTitulo(pelitmp.getTitulo());
 			        pelDto.setImagen(pelitmp.getImagen());
 			        pelDto.setFechaCreacion(pelitmp.getFechaCreacion());

@@ -6,11 +6,6 @@ import com.example.Disney.entity.Personaje;
 
 public class PeliculaGetDto  {
 	
-private long IDpelicula;
-	
-	private Long Calificacion;
-	
-	private List<Personaje> PersonajesAsociados;
 	
 	private String Imagen;
 
@@ -18,13 +13,6 @@ private long IDpelicula;
 	
 	private String FechaCreacion;
 	
-	public long getIDpelicula() {
-		return IDpelicula;
-	}
-
-	public void setIDpelicula(long iDpelicula) {
-		IDpelicula = iDpelicula;
-	}
 
 	public String getImagen() {
 		return Imagen;
@@ -48,22 +36,6 @@ private long IDpelicula;
 
 	public void setFechaCreacion(String fechaCreacion) {
 		this.FechaCreacion = fechaCreacion;
-	}
-
-	public Long getCalificacion() {
-		return Calificacion;
-	}
-
-	public void setCalificacion(Long calificacion) {
-		Calificacion = calificacion;
-	}
-
-	public List<Personaje>getPersonajesAsociados() {
-		return PersonajesAsociados;
-	}
-
-	public void setPersonajesAsocidados( List<Personaje> personajesAsociados) {
-		PersonajesAsociados = personajesAsociados;
 	}
 
 

@@ -5,7 +5,6 @@ import java.util.List;
 import com.example.Disney.entity.Pelicula;
 
 public class PersonajeDto {
-	private Long IDpersonaje;
 	
 	private String Imagen;
 	
@@ -19,13 +18,6 @@ public class PersonajeDto {
 	
 	private List <Pelicula> PeliculasAsociadas;
 	
-	public Long getIDpersonaje() {
-		return IDpersonaje;
-	}
-
-	public void setIDpersonaje(Long iDpersonaje) {
-		IDpersonaje = iDpersonaje;
-	}
 
 	public String getImagen() {
 		return Imagen;
