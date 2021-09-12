@@ -1,19 +1,18 @@
 package com.example.Disney.dto;
 
-import java.util.List;
-
-
 public class PeliculaPersonajesAsociadosDto {
-		
-		private Long Calificacion;
-		
-		private List<PeliculaPersonajeDto> PersonajesAsociados;
+	
 		
 		private String Imagen;
-
-		private String Titulo;
 		
-		private String FechaCreacion;
+		private String Nombre;
+		
+		private  Long Edad;
+		
+		private Long Peso;
+		
+		private String Historia;
+		
 		
 
 		public String getImagen() {
@@ -24,37 +23,38 @@ public class PeliculaPersonajesAsociadosDto {
 			this.Imagen = imagen;
 		}
 
-		public String getTitulo() {
-			return Titulo;
+		public String getNombre() {
+			return Nombre;
 		}
 
-		public void setTitulo(String titulo) {
-			this.Titulo = titulo;
+		public void setNombre(String nombre) {
+			this.Nombre = nombre;
 		}
 
-		public String getFechaCreacion() {
-			return FechaCreacion;
+		public Long getEdad() {
+			return Edad;
 		}
 
-		public void setFechaCreacion(String fechaCreacion) {
-			this.FechaCreacion = fechaCreacion;
+		public void setEdad(Long edad) {
+			Edad = edad;
 		}
 
-		public Long getCalificacion() {
-			return Calificacion;
+		public Long getPeso() {
+			return Peso;
 		}
 
-		public void setCalificacion(Long calificacion) {
-			Calificacion = calificacion;
+		public void setPeso(Long peso) {
+			Peso = peso;
 		}
 
-		public List<PeliculaPersonajeDto>getPersonajesAsociados() {
-			return PersonajesAsociados;
+		public String getHistoria() {
+			return Historia;
 		}
 
-		public void setPersonajesAsocidados( List<PeliculaPersonajeDto> personajesAsociados) {
-			PersonajesAsociados = personajesAsociados;
+		public void setHistoria(String historia) {
+			this.Historia = historia;
 		}
+
 
 
 		

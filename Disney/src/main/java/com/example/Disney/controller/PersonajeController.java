@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Personaje;
 import com.example.Disney.service.IPersonajeService;
@@ -42,6 +43,12 @@ public class PersonajeController {
 		 	
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> findPersonajeById(@PathVariable(value= "id") Long id, @RequestBody PersonajeDto personajeDto){
+		 return new ResponseEntity<>(personajeService.findById(id), HttpStatus.OK);		 
+		 	
+	}
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<?>updatePersonaje(@PathVariable(value= "id") Long id, @RequestBody PersonajeDto personajeDto){
 		return new ResponseEntity<>(personajeService.update(id, personajeDto), HttpStatus.OK);
@@ -54,5 +61,7 @@ public class PersonajeController {
 		return new ResponseEntity<>(HttpStatus.OK);
 		
 	}
+	
+	
 		
 	}

@@ -11,8 +11,8 @@ import com.example.Disney.Builder.GeneroBuilder;
 import com.example.Disney.Builder.PeliculaBuilder;
 import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.dto.PeliculaGetDto;
-import com.example.Disney.dto.PeliculaPersonajeDto;
 import com.example.Disney.dto.PeliculaPersonajesAsociadosDto;
+import com.example.Disney.dto.DetallePeliculaDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.dto.PersonajeGetDto;
 import com.example.Disney.dto.PersonajeIdDto;
@@ -64,115 +64,33 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	
 	
 	@Override
-	public List<PeliculaPersonajesAsociadosDto>findById(Long id){
-	Pelicula peliculaPorId = peliculaRepository.findById(id).get();
-    List<Personaje> lstPersonajes = personajeRepository.findAll();
-    List<Pelicula> lstPeliculas = peliculaRepository.findAll();
-    ArrayList<PeliculaPersonajeDto> lstPeliculaPersonajesDto = new ArrayList <PeliculaPersonajeDto>();
-    ArrayList<PersonajeIdDto> lstPersonajeId = new ArrayList<PersonajeIdDto>();
-    ArrayList<PeliculaPersonajesAsociadosDto> personajesAsociados =  new ArrayList<PeliculaPersonajesAsociadosDto>();
-     
-    for(Personaje personaje: lstPersonajes) {
-		PeliculaPersonajeDto peDto = new PeliculaPersonajeDto();
-		PersonajeIdDto peId = new PersonajeIdDto();
-		peDto.setEdad(personaje.getEdad());
-		peDto.setHistoria(personaje.getHistoria());
-		peDto.setImagen(personaje.getImagen());
-		peDto.setNombre(personaje.getNombre());
-		peDto.setPeso(personaje.getPeso());
-		peDto.setIDpersonaje(personaje.getIDpersonaje());
-		
-		lstPeliculaPersonajesDto.add(peDto);
-		lstPersonajeId.add(peId);
-		
+    public DetallePeliculaDto findById(Long id){
+        Pelicula peliculaPorId = peliculaRepository.findById(id).get();
+        ArrayList<PeliculaPersonajesAsociadosDto> lstPeliculaPersonajesDto = new ArrayList <PeliculaPersonajesAsociadosDto>();
+        DetallePeliculaDto detPelDto = new DetallePeliculaDto();
+
+        for (Personaje varPersonaje : peliculaPorId.getPersonajesAsociados()) {
+
+            PeliculaPersonajesAsociadosDto pelPerDto = new PeliculaPersonajesAsociadosDto();
+            pelPerDto.setEdad(varPersonaje.getEdad());
+            pelPerDto.setHistoria(varPersonaje.getHistoria());
+            pelPerDto.setImagen(varPersonaje.getImagen());
+            pelPerDto.setNombre(varPersonaje.getNombre());
+            pelPerDto.setPeso(varPersonaje.getPeso());
+
+            lstPeliculaPersonajesDto.add(pelPerDto);
+        }
+
+        detPelDto.setPersonajesAsocidados(lstPeliculaPersonajesDto);
+        detPelDto.setCalificacion(peliculaPorId.getCalificacion());
+        detPelDto.setFechaCreacion(peliculaPorId.getFechaCreacion());
+        detPelDto.setImagen(peliculaPorId.getImagen());
+        detPelDto.setTitulo(peliculaPorId.getTitulo());
+
+
+        return detPelDto;
+
     }
-    
-    
-	   
-            PeliculaPersonajesAsociadosDto peliTmp = new PeliculaPersonajesAsociadosDto();
-			peliTmp.setCalificacion(peliculaPorId.getCalificacion());
-			peliTmp.setFechaCreacion(peliculaPorId.getFechaCreacion());
-			peliTmp.setImagen(peliculaPorId.getImagen());
-			peliTmp.setTitulo(peliculaPorId.getTitulo());
-			for(Pelicula peliculaId: lstPeliculas) {
-			for(Personaje personajeId: lstPersonajes) {
-			if(personajeId.getIDpersonaje() == peliculaId.getIDpelicula()) {
-				
-			peliTmp.setPersonajesAsocidados(lstPeliculaPersonajesDto);
-			personajesAsociados.add(peliTmp);
-			}
-						
-			
-            
-		
-		
-		
-			
-	}
-			
-			}
-			return personajesAsociados;	
-	}
-	
-	
-	
-	/* Pelicula pelicula = peliculaRepository.findById(id).get();
-	List<Pelicula> lstPeliculas = peliculaRepository.findAll();
-	ArrayList<PeliculaDto> Pelicula = new ArrayList <PeliculaDto>();
-	// ArrayList<PeliculaPersonajesAsociadosDto> lstPersonajesAsociados = new ArrayList<PeliculaPersonajesAsociadosDto>();
-	// ArrayList<Pelicula> detallePelicula = new ArrayList <Pelicula>();
-	List<Personaje> lstPersonajes = personajeRepository.findAll();
-	ArrayList<PeliculaPersonajeDto> detallePelicula = new ArrayList <PeliculaPersonajeDto>();
-	//ArrayList<PersonajeIdDto> lstPersonajeId = new ArrayList<PersonajeIdDto>();
-	// List<Personaje> lstPersonajes = personajeRepository.findAll();
-	// Personaje personaje = personajeRepository.findById(id).get(); 
-	
-	// for(Personaje personajetmp :  lstPersonajes) {
-	
-	/*
-	  for(Personaje personaje: lstPersonajes) {
-		PeliculaPersonajeDto peDto = new PeliculaPersonajeDto();
-		PersonajeIdDto peId = new PersonajeIdDto();
-		peDto.setEdad(personaje.getEdad());
-		peDto.setHistoria(personaje.getHistoria());
-		peDto.setImagen(personaje.getImagen());
-		peDto.setNombre(personaje.getNombre());
-		peDto.setPeso(personaje.getPeso());
-		peDto.setIDpersonaje(personaje.getIDpersonaje());
-		
-		lstPeliculaPersonajesDto.add(peDto);
-		lstPersonajeId.add(peId);
-		
-		
-   }
-	*/
-	//}
-			
-	
-	  // for(Pelicula pelitmp :  lstPeliculas)
-	   /*
-	        PeliculaPersonajesAsociadosDto pelDto = new PeliculaPersonajesAsociadosDto ();
-	        pelDto.setTitulo(pelicula.getTitulo());
-	        pelDto.setImagen(pelicula.getImagen());
-	        pelDto.setCalificacion(pelicula.getCalificacion());
-	        pelDto.setFechaCreacion(pelicula.getFechaCreacion());
-	       /* for(Pelicula pel : lstPeliculas) {
-	        int x;
-	        x ++ ;
-	        if(lstPeliculas[x]  == 
-	        { */
-		/*
-	        pelDto.setPersonajesAsocidados(pelicula.getPersonajesAsociados());
-	        
-	        
-	       
-	        
-	        detallePelicula.add(pelDto);
-	 //  }
-	    
-		return detallePelicula;
-	}
-	*/
 	
 	
 		
