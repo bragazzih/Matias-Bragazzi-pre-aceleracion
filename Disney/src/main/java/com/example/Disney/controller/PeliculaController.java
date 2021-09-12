@@ -42,11 +42,17 @@ public class PeliculaController {
 	
 	@GetMapping
 	public ResponseEntity<?> findAllPelicula(){
-		 return new ResponseEntity<>(peliculaService.findAll(), HttpStatus.OK);
-		 
+		 return new ResponseEntity<>(peliculaService.findAll(), HttpStatus.OK);		 
 		 	
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> findPeliculaById(@PathVariable(value= "id") Long id, @RequestBody PeliculaDto peliculaDto){
+		 return new ResponseEntity<>(peliculaService.findById(id), HttpStatus.OK);		 
+		 	
+	}
+	
+
 	@PutMapping("/{id}")
 	public ResponseEntity<?>updatePelicula(@PathVariable(value= "id") Long id, @RequestBody PeliculaDto peliculaDto){
 		return new ResponseEntity<>(peliculaService.update(id, peliculaDto), HttpStatus.OK);

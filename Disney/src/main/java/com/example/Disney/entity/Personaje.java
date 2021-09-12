@@ -49,6 +49,14 @@ public class Personaje implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IDpersonaje;
 	
+	public Long getIDpersonaje() {
+		return IDpersonaje;
+	}
+
+	public void setIDpersonaje(Long iDpersonaje) {
+		IDpersonaje = iDpersonaje;
+	}
+
 	private String Imagen;
 	
 	private String Nombre;

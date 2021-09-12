@@ -3,6 +3,7 @@ package com.example.Disney.dto;
 import java.util.List;
 
 import com.example.Disney.entity.Personaje;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
