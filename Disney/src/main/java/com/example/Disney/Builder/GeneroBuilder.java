@@ -8,35 +8,24 @@ import com.example.Disney.entity.Pelicula;
 
 public class GeneroBuilder {
 
-	private String Imagen;
-	
-	private String Nombre;
-	
-<<<<<<< HEAD
-	private List<Pelicula>PeliculasSeriesAsociadas;
+    private String Imagen;
 
-=======
-	/*private Long PeliculasSeriesAsociadas;
-	
->>>>>>> stash
+    private String Nombre;
 
-	public GeneroBuilder withGeneroDto(GeneroDto GeneroDto) {
-		this.Imagen = GeneroDto.getImagen();
-		this.Nombre = GeneroDto.getNombre();
-		this.PeliculasSeriesAsociadas = GeneroDto.getPeliculasSeriesAsociadas();
-		return this;
-	}
+    private List<Pelicula>PeliculasSeriesAsociadas;
+
+
+    public GeneroBuilder withGeneroDto(GeneroDto GeneroDto) {
+        this.Imagen = GeneroDto.getImagen();
+        this.Nombre = GeneroDto.getNombre();
+        this.PeliculasSeriesAsociadas = GeneroDto.getPeliculasSeriesAsociadas();
+        return this;
+    }
 
 public Genero build () {
-	return new Genero(this.Imagen,this.Nombre,this.PeliculasSeriesAsociadas);
-	
+    return new Genero(this.Imagen,this.Nombre,this.PeliculasSeriesAsociadas);
+
 }
-	
-<<<<<<< HEAD
-=======
-	*/
->>>>>>> stash
-		
-	}
 
 
+    }
