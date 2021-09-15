@@ -3,7 +3,10 @@ package com.example.Disney.entity;
 
 import java.io.Serializable;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Set;
+=======
+>>>>>>> stash
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,7 +33,11 @@ public class Genero implements Serializable {
 
 	private static final long serialVersionUID = 5264086901345824349L;
 	
+<<<<<<< HEAD
 	public Genero(String imagen, String nombre, List<Pelicula>peliculasSeriesAsociadas) {
+=======
+	public Genero(String imagen, String nombre, List<Pelicula> peliculasSeriesAsociadas) {
+>>>>>>> stash
 		super();
 		Imagen = imagen;
 		Nombre = nombre;
@@ -50,8 +57,17 @@ public class Genero implements Serializable {
 	@OneToMany(mappedBy ="Genero")
 	private List<Pelicula>PeliculasSeriesAsociadas;	
 	
+<<<<<<< HEAD
 
+=======
+	//private Long PeliculasSeriesAsociadas;
+>>>>>>> stash
 	
+<<<<<<< HEAD
+=======
+	private List<Pelicula> PeliculasSeriesAsociadas;
+	
+>>>>>>> stash
 
 	public Long getIDgenero() {
 		return IDgenero;
@@ -78,6 +94,11 @@ public class Genero implements Serializable {
 		Nombre = nombre;
 	}
 	
+<<<<<<< HEAD
+=======
+	@OneToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
+	@JoinColumn(name= "id_pelicula", nullable= false)
+>>>>>>> stash
 	public List<Pelicula> getPeliculasSeriesAsociadas() {
 		return PeliculasSeriesAsociadas;
 	}
@@ -87,4 +108,8 @@ public class Genero implements Serializable {
 	}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> stash
 }

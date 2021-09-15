@@ -12,8 +12,13 @@ public class GeneroBuilder {
 	
 	private String Nombre;
 	
+<<<<<<< HEAD
 	private List<Pelicula>PeliculasSeriesAsociadas;
 
+=======
+	/*private Long PeliculasSeriesAsociadas;
+	
+>>>>>>> stash
 
 	public GeneroBuilder withGeneroDto(GeneroDto GeneroDto) {
 		this.Imagen = GeneroDto.getImagen();
@@ -27,6 +32,10 @@ public Genero build () {
 	
 }
 	
+<<<<<<< HEAD
+=======
+	*/
+>>>>>>> stash
 		
 	}
 
