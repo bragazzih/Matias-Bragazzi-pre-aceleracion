@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Disney.dto.PeliculaDto;
+import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Pelicula;
+import com.example.Disney.entity.Personaje;
 import com.example.Disney.service.IPeliculaService;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -35,7 +37,7 @@ public class PeliculaController {
 	
 	@PostMapping
 	public ResponseEntity<?> SavePelicula(@RequestBody PeliculaDto peliculaDto){
-	Pelicula pelicula = peliculaService.savePelicula(peliculaDto);
+		Pelicula pelicula = peliculaService.savePelicula(peliculaDto);
 	return new ResponseEntity<>(pelicula, HttpStatus.ACCEPTED);		
 				
 	}
@@ -61,6 +63,11 @@ public class PeliculaController {
 	@GetMapping(params="genre")
 	  public ResponseEntity<?> findByfindByGenreId(@RequestParam Long genre ) {
 		return new ResponseEntity<>(peliculaService.findByGenreId(genre), HttpStatus.OK);		 
+	  }
+	
+	@GetMapping(params="order")
+	  public ResponseEntity<?> findAllOrder(@RequestParam String order) {
+		return new ResponseEntity<>(peliculaService.findAllOrder(order), HttpStatus.OK);		 
 	  }
 	
 

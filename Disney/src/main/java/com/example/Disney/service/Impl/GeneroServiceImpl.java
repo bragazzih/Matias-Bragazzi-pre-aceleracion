@@ -28,6 +28,8 @@ public class GeneroServiceImpl implements IGeneroService {
 	private PeliculaRepository peliculaRepository;
 	
 	
+	
+	
 
 	@Override
 	public Genero saveGenero(GeneroDto generoDto) {
@@ -62,7 +64,7 @@ public class GeneroServiceImpl implements IGeneroService {
 		Genero genero = generoRepository.findById(id).get();
 		List<Pelicula> pelicula = peliculaRepository.findAll();
 		genero.setImagen(generoDto.getImagen());
-		genero.setNombre(genero.getNombre());
+		genero.setNombre(generoDto.getNombre());
 		genero.setPeliculasSeriesAsociadas(pelicula);
 		return generoRepository.save(genero);
 

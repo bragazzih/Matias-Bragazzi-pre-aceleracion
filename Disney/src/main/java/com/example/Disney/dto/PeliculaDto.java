@@ -1,7 +1,9 @@
 package com.example.Disney.dto;
 
+import java.util.Date;
 import java.util.List;
 
+import com.example.Disney.entity.Genero;
 import com.example.Disney.entity.Personaje;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,7 +20,9 @@ public class PeliculaDto {
 
 	private String Titulo;
 	
-	private String FechaCreacion;
+	private Date FechaCreacion;
+	
+	private Genero genero;
 	
 
 	public String getImagen() {
@@ -37,11 +41,11 @@ public class PeliculaDto {
 		this.Titulo = titulo;
 	}
 
-	public String getFechaCreacion() {
+	public Date getFechaCreacion() {
 		return FechaCreacion;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(Date fechaCreacion) {
 		this.FechaCreacion = fechaCreacion;
 	}
 
@@ -61,7 +65,14 @@ public class PeliculaDto {
 		PersonajesAsociados = personajesAsociados;
 	}
 
+	public Genero getGenero() {
+		return genero;
+	}
 
-	
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+
+
 	
 }

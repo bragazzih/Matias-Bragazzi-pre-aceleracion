@@ -16,5 +16,6 @@ public Pelicula update(Long id, PeliculaDto PeliculaDto);
 public void delete (Long id);
 public List<Pelicula> findByName( String name );
 public List<PeliculasPorGeneroDto> findByGenreId(Long genre);
+List<PeliculaGetDto> findAllOrder(String order);
 	
 }

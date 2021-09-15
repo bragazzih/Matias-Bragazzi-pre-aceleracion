@@ -1,7 +1,7 @@
 package com.example.Disney.service.Impl;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +15,6 @@ import com.example.Disney.dto.PeliculaGetDto;
 import com.example.Disney.dto.PeliculaPersonajesAsociadosDto;
 import com.example.Disney.dto.PeliculasPorGeneroDto;
 import com.example.Disney.dto.DetallePeliculaDto;
-
-
 import com.example.Disney.entity.Genero;
 import com.example.Disney.entity.Pelicula;
 import com.example.Disney.entity.Personaje;
@@ -41,17 +39,19 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	private GeneroRepository generoRepository;
 	
 	
+	
 
 	@Override
 	public Pelicula savePelicula(PeliculaDto peliculaDto) {
 		Pelicula newPelicula= new PeliculaBuilder().withPeliculaDto(peliculaDto).build();
 		newPelicula.setPersonajesAsociados((personajeRepository.findAll()));
+		newPelicula.setGenero(peliculaDto.getGenero());
 		return peliculaRepository.save(newPelicula);
 	}
 
 	@Override
     public List<PeliculaGetDto> findAll(){
-			List<Pelicula> lstPeliculas = peliculaRepository.findAll();
+			List<Pelicula> lstPeliculas = peliculaRepository.findAll();			
 			ArrayList<PeliculaGetDto> lstPeliculasDto = new ArrayList<PeliculaGetDto> ();
 			    for(Pelicula pelitmp :  lstPeliculas)
 			    {
@@ -68,6 +68,7 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	
 	
 	@Override
+	@JsonIgnore
     public DetallePeliculaDto findById(Long id){
         Pelicula peliculaPorId = peliculaRepository.findById(id).get();
         ArrayList<PeliculaPersonajesAsociadosDto> lstPeliculaPersonajesDto = new ArrayList <PeliculaPersonajesAsociadosDto>();
@@ -90,7 +91,7 @@ public class PeliculaServiceImpl implements IPeliculaService{
         detPelDto.setFechaCreacion(peliculaPorId.getFechaCreacion());
         detPelDto.setImagen(peliculaPorId.getImagen());
         detPelDto.setTitulo(peliculaPorId.getTitulo());
-
+        detPelDto.setGenero(peliculaPorId.getGenero());
 
         return detPelDto;
 
@@ -103,10 +104,11 @@ public class PeliculaServiceImpl implements IPeliculaService{
 		Pelicula pelicula = peliculaRepository.findById(id).get();
 		List<Personaje> personaje = personajeRepository.findAll();
 		pelicula.setImagen (peliculaDto.getImagen());
-		pelicula.setTitulo(pelicula.getTitulo());
+		pelicula.setTitulo(peliculaDto.getTitulo());
 		pelicula.setPersonajesAsociados(personaje);
 		pelicula.setCalificacion(peliculaDto.getCalificacion());
 		pelicula.setFechaCreacion(peliculaDto.getFechaCreacion());
+		pelicula.setGenero(peliculaDto.getGenero());
 		return peliculaRepository.save(pelicula);
 
 		
@@ -138,7 +140,7 @@ public class PeliculaServiceImpl implements IPeliculaService{
         	  pelPorGenDto.setTitulo(varPelicula.getTitulo());
         	  pelPorGenDto.setCalificacion(varPelicula.getCalificacion());
         	  pelPorGenDto.setFechaCreacion(varPelicula.getFechaCreacion());
-        		
+        	  pelPorGenDto.setGenero(varPelicula.getGenero());
         		
         		lstPeliculasPorGeneroDto.add(pelPorGenDto);
         		
@@ -154,6 +156,33 @@ public class PeliculaServiceImpl implements IPeliculaService{
         return lstPeliculasPorGeneroDto;
 
 	}
+	
+	@Override
+    public List<PeliculaGetDto> findAllOrder(String order){
+            List<Pelicula> lstPeliculas = peliculaRepository.findAll();
+            ArrayList<PeliculaGetDto> lstPeliculasDto = new ArrayList<PeliculaGetDto> ();
+                for(Pelicula pelitmp :  lstPeliculas)
+                {
+                    PeliculaGetDto pelDto = new PeliculaGetDto();
+                    pelDto.setTitulo(pelitmp.getTitulo());
+                    pelDto.setImagen(pelitmp.getImagen());
+                    pelDto.setFechaCreacion(pelitmp.getFechaCreacion());
+
+
+                    lstPeliculasDto.add(pelDto);
+                }
+
+                if(order.equals("ASC"))                {
+                    Collections.sort(lstPeliculasDto);
+                }
+                else {
+                	Collections.sort(lstPeliculasDto, Collections.reverseOrder());
+                }
+
+
+
+                return lstPeliculasDto;
+            }
 	
 	
 	

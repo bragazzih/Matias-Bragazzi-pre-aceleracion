@@ -1,5 +1,9 @@
 package com.example.Disney.dto;
 
+import java.util.Date;
+import java.util.List;
+
+import com.example.Disney.entity.Genero;
 
 public class PeliculasPorGeneroDto {
 	
@@ -7,9 +11,11 @@ public class PeliculasPorGeneroDto {
 
 	private String Titulo;
 
-	private String FechaCreacion;
+	private Date FechaCreacion;
 	
 	private Long Calificacion;
+	
+	private Genero genero;
 
 	public String getImagen() {
 		return Imagen;
@@ -27,11 +33,11 @@ public class PeliculasPorGeneroDto {
 		Titulo = titulo;
 	}
 
-	public String getFechaCreacion() {
+	public Date getFechaCreacion() {
 		return FechaCreacion;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(Date fechaCreacion) {
 		FechaCreacion = fechaCreacion;
 	}
 
@@ -42,7 +48,14 @@ public class PeliculasPorGeneroDto {
 	public void setCalificacion(Long calificacion) {
 		Calificacion = calificacion;
 	}
-	
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
 
 	
 	

@@ -1,5 +1,6 @@
 package com.example.Disney.dto;
 
+import java.util.Date;
 
 public class PersonajePeliculasAsociadasDto {
 
@@ -9,7 +10,7 @@ private Long Calificacion;
 
 	private String Titulo;
 	
-	private String FechaCreacion;
+	private Date FechaCreacion;
 	
 
 	public String getImagen() {
@@ -28,11 +29,11 @@ private Long Calificacion;
 		this.Titulo = titulo;
 	}
 
-	public String getFechaCreacion() {
+	public Date getFechaCreacion() {
 		return FechaCreacion;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(Date fechaCreacion) {
 		this.FechaCreacion = fechaCreacion;
 	}
 

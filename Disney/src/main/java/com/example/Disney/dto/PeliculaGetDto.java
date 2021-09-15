@@ -1,47 +1,48 @@
 package com.example.Disney.dto;
 
-import java.util.List;
+import java.util.Date;
 
-import com.example.Disney.entity.Personaje;
-
-public class PeliculaGetDto  {
-	
-	
-	private String Imagen;
-
-	private String Titulo;
-	
-	private String FechaCreacion;
-	
-
-	public String getImagen() {
-		return Imagen;
-	}
-
-	public void setImagen(String imagen) {
-		this.Imagen = imagen;
-	}
-
-	public String getTitulo() {
-		return Titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.Titulo = titulo;
-	}
-
-	public String getFechaCreacion() {
-		return FechaCreacion;
-	}
-
-	public void setFechaCreacion(String fechaCreacion) {
-		this.FechaCreacion = fechaCreacion;
-	}
+public class PeliculaGetDto implements Comparable<PeliculaGetDto>  {
 
 
-	
-	
-}	
+    private String Imagen;
+
+    private String Titulo;
+
+    private Date FechaCreacion;
+
+
+    public String getImagen() {
+        return Imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.Imagen = imagen;
+    }
+
+    public String getTitulo() {
+        return Titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.Titulo = titulo;
+    }
+
+    public Date getFechaCreacion() {
+        return FechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.FechaCreacion = fechaCreacion;
+    }
+
+
+    @Override
+    public int compareTo(PeliculaGetDto pel) {
+      return Long.valueOf(this.getFechaCreacion().getTime()).compareTo(pel.getFechaCreacion().getTime());
+    }
+
+}
 	
 
 

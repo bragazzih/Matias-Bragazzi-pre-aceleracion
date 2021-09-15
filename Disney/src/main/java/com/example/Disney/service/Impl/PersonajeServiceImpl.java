@@ -83,11 +83,11 @@ public class PersonajeServiceImpl implements IPersonajeService {
 		Personaje personaje= personajeRepository.findById(id).get();
 		List<Pelicula> pelicula = peliculaRepository.findAll();
 		personaje.setImagen (personajeDto.getImagen());
-		personaje.setNombre(personaje.getNombre());
+		personaje.setNombre(personajeDto.getNombre());
 		personaje.setPeliculasAsociadas(pelicula);
-		personaje.setHistoria(personaje.getHistoria());
-		personaje.setEdad(personaje.getEdad());
-		personaje.setPeso(personaje.getPeso());
+		personaje.setHistoria(personajeDto.getHistoria());
+		personaje.setEdad(personajeDto.getEdad());
+		personaje.setPeso(personajeDto.getPeso());
 		return personajeRepository.save(personaje);
 
 		

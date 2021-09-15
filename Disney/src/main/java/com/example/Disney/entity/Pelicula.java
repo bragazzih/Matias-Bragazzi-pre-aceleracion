@@ -1,6 +1,7 @@
 package com.example.Disney.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -36,14 +37,15 @@ public class Pelicula implements Serializable {
 
 	private static final long serialVersionUID = 730656414716250101L;
 
-public Pelicula(String imagen, String titulo, String fechaCreacion, Long calificacion,
-		List<Personaje> personajesAsociados) {
+public Pelicula(String imagen, String titulo, Date fechaCreacion, Long calificacion,
+		List<Personaje> personajesAsociados, Genero genero) {
 		super();
 		Imagen = imagen;
 		Titulo = titulo;
 		FechaCreacion = fechaCreacion;
 		Calificacion = calificacion;
 		PersonajesAsociados = personajesAsociados;
+		Genero = genero;
 	}
 
 
@@ -65,7 +67,7 @@ public void setImagen(String imagen) {
 
 	private String Titulo;
 
-	private String FechaCreacion;
+	private Date FechaCreacion;
 	
 	private Long Calificacion;
 	
@@ -76,11 +78,11 @@ public void setImagen(String imagen) {
 	private List<Personaje>PersonajesAsociados; 
 	
     
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "id_genero", nullable = false)
+	@JoinColumn(name = "id_genero",  nullable = false)
 	private Genero Genero;
 	
+
 	public Long getIDpelicula() {
 		return IDpelicula;
 	}
@@ -97,11 +99,11 @@ public void setImagen(String imagen) {
 		Titulo = titulo;
 	}
 
-	public String getFechaCreacion() {
+	public Date getFechaCreacion() {
 		return FechaCreacion;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(Date fechaCreacion) {
 		FechaCreacion = fechaCreacion;
 	}
 
@@ -130,8 +132,6 @@ public void setImagen(String imagen) {
 		Genero = genero;
 	}
 
-
-	
 
 
 }
