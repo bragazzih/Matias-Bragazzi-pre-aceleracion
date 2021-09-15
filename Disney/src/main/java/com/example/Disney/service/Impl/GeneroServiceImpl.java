@@ -31,14 +31,13 @@ public class GeneroServiceImpl implements IGeneroService {
 	
 	
 
-	/*@Override
-	 public Genero saveGenero(GeneroDto generoDto) {
+	@Override
+	public Genero saveGenero(GeneroDto generoDto) {
 		Genero newGenero= new GeneroBuilder().withGeneroDto(generoDto).build();
 		newGenero.setPeliculasSeriesAsociadas((peliculaRepository.findAll()));
 		return generoRepository.save(newGenero); 
 	}
-	*/
-	
+
 	@Override
     public List<GeneroGetDto> findAll(){
 			List<Genero> lstGeneros = generoRepository.findAll();
@@ -77,17 +76,4 @@ public class GeneroServiceImpl implements IGeneroService {
 		generoRepository.deleteById(id);
 		
 	}
-<<<<<<< HEAD
-=======
-
-	@Override
-	public Genero saveGenero(GeneroDto generoDto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
->>>>>>> stash
 }
-
-
-
