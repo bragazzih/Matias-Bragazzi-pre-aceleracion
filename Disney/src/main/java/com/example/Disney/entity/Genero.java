@@ -1,3 +1,4 @@
+  
 package com.example.Disney.entity;
 
 import java.io.Serializable;
@@ -45,14 +46,15 @@ public class Genero implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_genero")
 	private Long IDgenero;
 	
 	private String Imagen;
 	
 	private String Nombre;
+	
 
 	@OneToMany(mappedBy ="Genero")
-	@JsonIgnore
 	private List<Pelicula>PeliculasSeriesAsociadas;	
 	
 <<<<<<< HEAD

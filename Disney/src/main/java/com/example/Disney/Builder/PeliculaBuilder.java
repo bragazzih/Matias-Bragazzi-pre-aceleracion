@@ -1,8 +1,11 @@
 package com.example.Disney.Builder;
 
+import java.util.Date;
 import java.util.List;
 
 import com.example.Disney.dto.PeliculaDto;
+import com.example.Disney.dto.PeliculaSaveDto;
+import com.example.Disney.entity.Genero;
 import com.example.Disney.entity.Pelicula;
 import com.example.Disney.entity.Personaje;
 
@@ -17,35 +20,37 @@ public class PeliculaBuilder {
 
 	private String Titulo;
 	
-	private String FechaCreacion;
-<<<<<<< HEAD
+	private Date FechaCreacion;
+	
+	private Genero genero;
 	
 	public PeliculaBuilder withPeliculaDto(PeliculaDto PeliculaDto) {
-=======
-	/*
-	public PeliculaBuilder whithPeliculaDto(PeliculaDto PeliculaDto) {
-		this.IDpelicula = PeliculaDto.getIDpelicula();
->>>>>>> stash
 	    this.Calificacion = PeliculaDto.getCalificacion();
 	    this.PersonajesAsociados = PeliculaDto.getPersonajesAsociados();
 	    this.Imagen = PeliculaDto.getImagen();
 	    this.Titulo = PeliculaDto.getTitulo();
 	    this.FechaCreacion= PeliculaDto.getFechaCreacion();
+	    this.genero = PeliculaDto.getGenero();
+		return this;
+	}
+	
+	public PeliculaBuilder withPeliculaSaveDto(PeliculaSaveDto PeliculaDto) {
+	    this.Calificacion = PeliculaDto.getCalificacion();
+	    this.PersonajesAsociados = PeliculaDto.getPersonajesAsociados();
+	    this.Imagen = PeliculaDto.getImagen();
+	    this.Titulo = PeliculaDto.getTitulo();
+	    this.FechaCreacion= PeliculaDto.getFechaCreacion();
+	    this.genero = new Genero(); 
+	    this.genero.setIDgenero(PeliculaDto.getIdGenero());
 		return this;
 	}
 	
 	public Pelicula build() {
-		return new Pelicula(this.Imagen, this.Titulo, this.FechaCreacion, this.Calificacion, this.PersonajesAsociados);
+		return new Pelicula(this.Imagen, this.Titulo, this.FechaCreacion, this.Calificacion, this.PersonajesAsociados, this.genero);
 		
 	}
-<<<<<<< HEAD
 	
-=======
-	*/
->>>>>>> stash
 }
 
 
-		
-	
 

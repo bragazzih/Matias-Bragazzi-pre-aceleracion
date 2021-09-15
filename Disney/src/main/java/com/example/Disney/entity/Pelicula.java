@@ -1,11 +1,9 @@
 package com.example.Disney.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Set;
-=======
->>>>>>> stash
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,18 +37,15 @@ public class Pelicula implements Serializable {
 
 	private static final long serialVersionUID = 730656414716250101L;
 
-public Pelicula(String imagen, String titulo, String fechaCreacion, Long calificacion,
-<<<<<<< HEAD
-		List<Personaje> personajesAsociados) {
-=======
-			List<Personaje>personajesAsociados) {
->>>>>>> stash
+public Pelicula(String imagen, String titulo, Date fechaCreacion, Long calificacion,
+		List<Personaje> personajesAsociados, Genero genero) {
 		super();
 		Imagen = imagen;
 		Titulo = titulo;
 		FechaCreacion = fechaCreacion;
 		Calificacion = calificacion;
 		PersonajesAsociados = personajesAsociados;
+		Genero = genero;
 	}
 
 
@@ -72,11 +67,10 @@ public void setImagen(String imagen) {
 
 	private String Titulo;
 
-	private String FechaCreacion;
+	private Date FechaCreacion;
 	
 	private Long Calificacion;
 	
-<<<<<<< HEAD
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
 	@JoinTable(name= "Peliculas_personajes", joinColumns = @JoinColumn(name = "id_pelicula"), 
@@ -84,14 +78,11 @@ public void setImagen(String imagen) {
 	private List<Personaje>PersonajesAsociados; 
 	
     
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "id_genero", nullable = false)
+	@JoinColumn(name = "id_genero",  nullable = false)
 	private Genero Genero;
-=======
-	private List<Personaje>PersonajesAsociados;
->>>>>>> stash
 	
+
 	public Long getIDpelicula() {
 		return IDpelicula;
 	}
@@ -108,20 +99,14 @@ public void setImagen(String imagen) {
 		Titulo = titulo;
 	}
 
-	public String getFechaCreacion() {
+	public Date getFechaCreacion() {
 		return FechaCreacion;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(Date fechaCreacion) {
 		FechaCreacion = fechaCreacion;
 	}
 
-<<<<<<< HEAD
-=======
-
-	@ManyToMany(cascade= CascadeType.ALL, targetEntity = Personaje.class)
-	@JoinColumn(name= "id_personaje", nullable= false)
->>>>>>> stash
 	public List<Personaje> getPersonajesAsociados() {
 		return PersonajesAsociados;
 	}
@@ -130,11 +115,6 @@ public void setImagen(String imagen) {
 		PersonajesAsociados = personajesAsociados;
 	}
 
-<<<<<<< HEAD
-=======
-
-	@Column(name="Calificacion")
->>>>>>> stash
 	public Long getCalificacion() {
 		return Calificacion;
 	}
@@ -144,8 +124,14 @@ public void setImagen(String imagen) {
 		Calificacion = calificacion;
 	}
 
+	public Genero getGenero() {
+		return Genero;
+	}
 
-	
+	public void setGenero(Genero genero) {
+		Genero = genero;
+	}
+
 
 
 }

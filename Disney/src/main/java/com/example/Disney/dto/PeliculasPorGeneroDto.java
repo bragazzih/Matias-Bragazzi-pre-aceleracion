@@ -4,33 +4,25 @@ import java.util.Date;
 import java.util.List;
 
 import com.example.Disney.entity.Genero;
-import com.example.Disney.entity.Personaje;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-
-public class PeliculaDto {
-	
-	private Long Calificacion;
-	
-	private List<Personaje> PersonajesAsociados;
+public class PeliculasPorGeneroDto {
 	
 	private String Imagen;
 
 	private String Titulo;
-	
+
 	private Date FechaCreacion;
 	
-	private Genero genero;
+	private Long Calificacion;
 	
+	private Genero genero;
 
 	public String getImagen() {
 		return Imagen;
 	}
 
 	public void setImagen(String imagen) {
-		this.Imagen = imagen;
+		Imagen = imagen;
 	}
 
 	public String getTitulo() {
@@ -38,7 +30,7 @@ public class PeliculaDto {
 	}
 
 	public void setTitulo(String titulo) {
-		this.Titulo = titulo;
+		Titulo = titulo;
 	}
 
 	public Date getFechaCreacion() {
@@ -46,7 +38,7 @@ public class PeliculaDto {
 	}
 
 	public void setFechaCreacion(Date fechaCreacion) {
-		this.FechaCreacion = fechaCreacion;
+		FechaCreacion = fechaCreacion;
 	}
 
 	public Long getCalificacion() {
@@ -57,14 +49,6 @@ public class PeliculaDto {
 		Calificacion = calificacion;
 	}
 
-	public List<Personaje>getPersonajesAsociados() {
-		return PersonajesAsociados;
-	}
-
-	public void setPersonajesAsocidados( List<Personaje> personajesAsociados) {
-		PersonajesAsociados = personajesAsociados;
-	}
-
 	public Genero getGenero() {
 		return genero;
 	}
@@ -73,6 +57,6 @@ public class PeliculaDto {
 		this.genero = genero;
 	}
 
-
+	
 	
 }

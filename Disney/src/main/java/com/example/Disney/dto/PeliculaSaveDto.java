@@ -3,14 +3,9 @@ package com.example.Disney.dto;
 import java.util.Date;
 import java.util.List;
 
-import com.example.Disney.entity.Genero;
 import com.example.Disney.entity.Personaje;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-
-public class PeliculaDto {
+public class PeliculaSaveDto {
 	
 	private Long Calificacion;
 	
@@ -22,7 +17,7 @@ public class PeliculaDto {
 	
 	private Date FechaCreacion;
 	
-	private Genero genero;
+	private Long IdGenero;
 	
 
 	public String getImagen() {
@@ -65,12 +60,13 @@ public class PeliculaDto {
 		PersonajesAsociados = personajesAsociados;
 	}
 
-	public Genero getGenero() {
-		return genero;
+
+	public Long getIdGenero() {
+		return IdGenero;
 	}
 
-	public void setGenero(Genero genero) {
-		this.genero = genero;
+	public void setIdGenero(Long idGenero) {
+		IdGenero = idGenero;
 	}
 
 

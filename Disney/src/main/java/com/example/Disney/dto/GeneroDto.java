@@ -6,7 +6,6 @@ import java.util.Set;
 import com.example.Disney.entity.Pelicula;
 
 public class GeneroDto {
-	private Long IDgenero;
 
 	private String Imagen;
 	
@@ -14,13 +13,6 @@ public class GeneroDto {
 	
 	private List<Pelicula> PeliculasSeriesAsociadas;
 
-	public Long getIDgenero() {
-		return IDgenero;
-	}
-
-	public void setIDgenero(Long iDgenero) {
-		IDgenero = iDgenero;
-	}
 
 	public String getImagen() {
 		return Imagen;
@@ -45,5 +37,7 @@ public class GeneroDto {
 	public void setPeliculasSeriesAsociadas(List<Pelicula> peliculasSeriesAsociadas) {
 		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
 	}
+	
+	
 
 }

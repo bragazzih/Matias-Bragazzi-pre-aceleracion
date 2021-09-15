@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.Disney.Builder.GeneroBuilder;
 import com.example.Disney.dto.GeneroDto;
+import com.example.Disney.dto.GeneroGetDto;
+import com.example.Disney.dto.PeliculaGetDto;
 import com.example.Disney.entity.Genero;
 import com.example.Disney.repository.GeneroRepository;
 import com.example.Disney.repository.PeliculaRepository;
@@ -26,6 +28,8 @@ public class GeneroServiceImpl implements IGeneroService {
 	private PeliculaRepository peliculaRepository;
 	
 	
+	
+	
 
 	/*@Override
 	 public Genero saveGenero(GeneroDto generoDto) {
@@ -36,24 +40,24 @@ public class GeneroServiceImpl implements IGeneroService {
 	*/
 	
 	@Override
-    public List<Genero> findAll(){
-		return generoRepository.findAll();	
-		
-	}
-	
-	/* public List<GeneroDto> findAll() {
-		List<Genero> lstGeneros = generoRepository.findAll();
-		List<GeneroDto> lstGenerosDTO = new ArrayList<GeneroDto>();
-		    for (Genero gen : lstGeneros) {
-		        
-		    	GeneroDto gener = new GeneroDto();
-		        gener.setNombre(gen.getNombre());
-		        
-		        lstGenerosDTO.add(gener);
-		    }
-			return lstGenerosDTO;
-	}
-	*/   
+    public List<GeneroGetDto> findAll(){
+			List<Genero> lstGeneros = generoRepository.findAll();
+			ArrayList<GeneroGetDto> lstGeneroGetDto = new ArrayList<GeneroGetDto>();
+			    for(Genero generotmp :  lstGeneros)
+			    {
+			    	GeneroGetDto genDto = new GeneroGetDto();
+			        genDto.setImagen(generotmp.getImagen());
+			        genDto.setNombre(generotmp.getNombre());
+			        
+			        
+			        
+			        lstGeneroGetDto.add(genDto);
+			    }
+			    
+			    
+				return lstGeneroGetDto;
+			}
+
 		 
 
 	@Override
@@ -61,7 +65,7 @@ public class GeneroServiceImpl implements IGeneroService {
 		Genero genero = generoRepository.findById(id).get();
 		List<Pelicula> pelicula = peliculaRepository.findAll();
 		genero.setImagen(generoDto.getImagen());
-		genero.setNombre(genero.getNombre());
+		genero.setNombre(generoDto.getNombre());
 		genero.setPeliculasSeriesAsociadas(pelicula);
 		return generoRepository.save(genero);
 
