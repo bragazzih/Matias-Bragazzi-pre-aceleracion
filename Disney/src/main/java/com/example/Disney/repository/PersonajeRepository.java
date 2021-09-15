@@ -7,9 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.example.Disney.entity.Personaje;
 
 @Repository
-public interface PersonajeRepository extends JpaRepository<Personaje, Long> {
-
-
-}
+public interface PersonajeRepository extends JpaRepository<Personaje, Long> {}
 
 

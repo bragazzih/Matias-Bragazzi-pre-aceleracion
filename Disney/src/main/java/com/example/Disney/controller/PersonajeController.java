@@ -1,5 +1,6 @@
 package com.example.Disney.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Disney.dto.PeliculaDto;
+
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Personaje;
+
 import com.example.Disney.service.IPersonajeService;
 
 @RestController
@@ -27,6 +32,9 @@ public class PersonajeController {
 	
 	@Autowired
 	private IPersonajeService personajeService;
+	
+	
+	
 	
 	@PostMapping
 	public ResponseEntity<?> SavePersonaje(@RequestBody PersonajeDto personajeDto){
@@ -43,8 +51,24 @@ public class PersonajeController {
 		 	
 	}
 	
+	@GetMapping(params="name")
+	  public ResponseEntity<?> findByName(@RequestParam String name ) {
+		return new ResponseEntity<>(personajeService.findByName(name), HttpStatus.OK);		 
+	  }
+	
+	@GetMapping(params="age")
+	  public ResponseEntity<?> findByName(@RequestParam Long age ) {
+		return new ResponseEntity<>(personajeService.findByAge(age), HttpStatus.OK);		 
+	  }
+	
+	@GetMapping(params="movies")
+	  public ResponseEntity<?> findByMovieId(@RequestParam Long movies ) {
+		return new ResponseEntity<>(personajeService.findByMovieId(movies), HttpStatus.OK);		 
+	  }
+
+	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> findPersonajeById(@PathVariable(value= "id") Long id, @RequestBody PersonajeDto personajeDto){
+	public ResponseEntity<?>findPersonajeById(@PathVariable(value= "id") Long id){
 		 return new ResponseEntity<>(personajeService.findById(id), HttpStatus.OK);		 
 		 	
 	}

@@ -2,6 +2,8 @@ package com.example.Disney.dto;
 
 import java.util.List;
 
+import javax.persistence.Column;
+
 public class DetallePersonajeDto {
 		
 		private String Imagen;

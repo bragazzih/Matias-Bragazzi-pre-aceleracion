@@ -1,21 +1,22 @@
 package com.example.Disney.service.Impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.Disney.Builder.GeneroBuilder;
+
 import com.example.Disney.Builder.PeliculaBuilder;
 import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.dto.PeliculaGetDto;
 import com.example.Disney.dto.PeliculaPersonajesAsociadosDto;
+import com.example.Disney.dto.PeliculasPorGeneroDto;
 import com.example.Disney.dto.DetallePeliculaDto;
-import com.example.Disney.dto.PersonajeDto;
-import com.example.Disney.dto.PersonajeGetDto;
-import com.example.Disney.dto.PersonajeIdDto;
+
+
 import com.example.Disney.entity.Genero;
 import com.example.Disney.entity.Pelicula;
 import com.example.Disney.entity.Personaje;
@@ -23,8 +24,8 @@ import com.example.Disney.repository.GeneroRepository;
 import com.example.Disney.repository.PeliculaRepository;
 import com.example.Disney.repository.PersonajeRepository;
 import com.example.Disney.service.IPeliculaService;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Repository
 public class PeliculaServiceImpl implements IPeliculaService{
@@ -35,6 +36,9 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	
 	@Autowired
 	private PersonajeRepository personajeRepository;
+	
+	@Autowired
+	private GeneroRepository generoRepository;
 	
 	
 
@@ -93,8 +97,6 @@ public class PeliculaServiceImpl implements IPeliculaService{
     }
 	
 	
-		
-	
 
 	@Override
 	public Pelicula update(Long id, PeliculaDto peliculaDto) {
@@ -115,5 +117,45 @@ public class PeliculaServiceImpl implements IPeliculaService{
 		peliculaRepository.deleteById(id);
 		
 	}
+	
+	@Override
+	@JsonIgnore
+	public List<Pelicula> findByName( String name ){
+		List<Pelicula> lista = peliculaRepository.findAll();
+		
+		return lista.stream().filter((p)->p.getTitulo().equals(name)).collect(Collectors.toList());
+		
+	} 
+	
+	@Override
+	public List<PeliculasPorGeneroDto> findByGenreId( Long genre ){
+        List<Pelicula> lista = peliculaRepository.findAll();      
+        ArrayList<PeliculasPorGeneroDto> lstPeliculasPorGeneroDto = new ArrayList <PeliculasPorGeneroDto>();
+        for (Pelicula varPelicula : lista) {
+        	if(varPelicula.getGenero().getIDgenero() == genre) {
+        	  PeliculasPorGeneroDto pelPorGenDto = new PeliculasPorGeneroDto();
+        	  pelPorGenDto.setImagen (varPelicula.getImagen());
+        	  pelPorGenDto.setTitulo(varPelicula.getTitulo());
+        	  pelPorGenDto.setCalificacion(varPelicula.getCalificacion());
+        	  pelPorGenDto.setFechaCreacion(varPelicula.getFechaCreacion());
+        		
+        		
+        		lstPeliculasPorGeneroDto.add(pelPorGenDto);
+        		
+        		
+        		
+        		
+        		
+        	}
+         
+            
+        }
+        
+        return lstPeliculasPorGeneroDto;
+
+	}
+	
+	
+	
 }
 

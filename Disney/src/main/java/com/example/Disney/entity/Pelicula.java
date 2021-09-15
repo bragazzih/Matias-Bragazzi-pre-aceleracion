@@ -122,6 +122,14 @@ public void setImagen(String imagen) {
 		Calificacion = calificacion;
 	}
 
+	public Genero getGenero() {
+		return Genero;
+	}
+
+	public void setGenero(Genero genero) {
+		Genero = genero;
+	}
+
 
 	
 

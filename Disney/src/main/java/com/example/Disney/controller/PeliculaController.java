@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Disney.dto.PeliculaDto;
@@ -47,10 +48,20 @@ public class PeliculaController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> findPeliculaById(@PathVariable(value= "id") Long id, @RequestBody PeliculaDto peliculaDto){
+	public ResponseEntity<?> findPeliculaById(@PathVariable(value= "id") Long id){
 		 return new ResponseEntity<>(peliculaService.findById(id), HttpStatus.OK);		 
 		 	
 	}
+	
+	@GetMapping(params="name")
+	  public ResponseEntity<?> findByName(@RequestParam String name ) {
+		return new ResponseEntity<>(peliculaService.findByName(name), HttpStatus.OK);		 
+	  }
+	
+	@GetMapping(params="genre")
+	  public ResponseEntity<?> findByfindByGenreId(@RequestParam Long genre ) {
+		return new ResponseEntity<>(peliculaService.findByGenreId(genre), HttpStatus.OK);		 
+	  }
 	
 
 	@PutMapping("/{id}")

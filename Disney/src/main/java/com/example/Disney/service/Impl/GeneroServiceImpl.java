@@ -54,19 +54,7 @@ public class GeneroServiceImpl implements IGeneroService {
 			    
 				return lstGeneroGetDto;
 			}
-	/* public List<GeneroDto> findAll() {
-		List<Genero> lstGeneros = generoRepository.findAll();
-		List<GeneroDto> lstGenerosDTO = new ArrayList<GeneroDto>();
-		    for (Genero gen : lstGeneros) {
-		        
-		    	GeneroDto gener = new GeneroDto();
-		        gener.setNombre(gen.getNombre());
-		        
-		        lstGenerosDTO.add(gener);
-		    }
-			return lstGenerosDTO;
-	}
-	*/   
+
 		 
 
 	@Override

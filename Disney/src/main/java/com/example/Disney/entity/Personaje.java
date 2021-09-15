@@ -23,7 +23,6 @@ import javax.persistence.ElementCollection;
 
 @Entity
 @Table(name = "Personaje")
-
 public class Personaje implements Serializable {
 
 
