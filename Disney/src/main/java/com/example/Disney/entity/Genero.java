@@ -1,12 +1,8 @@
-  
 package com.example.Disney.entity;
 
 import java.io.Serializable;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Set;
-=======
->>>>>>> stash
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,90 +22,68 @@ import javax.persistence.ElementCollection;
 @Table(name = "Genero")
 
 public class Genero implements Serializable {
-	
-	public Genero() {
-		super();
-	}
 
-	private static final long serialVersionUID = 5264086901345824349L;
-	
-<<<<<<< HEAD
-	public Genero(String imagen, String nombre, List<Pelicula>peliculasSeriesAsociadas) {
-=======
-	public Genero(String imagen, String nombre, List<Pelicula> peliculasSeriesAsociadas) {
->>>>>>> stash
-		super();
-		Imagen = imagen;
-		Nombre = nombre;
-		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
-	}
+    public Genero() {
+        super();
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_genero")
-	private Long IDgenero;
-	
-	private String Imagen;
-	
-	private String Nombre;
-	
+    private static final long serialVersionUID = 5264086901345824349L;
 
-	@OneToMany(mappedBy ="Genero")
-	private List<Pelicula>PeliculasSeriesAsociadas;	
-	
-<<<<<<< HEAD
+    public Genero(String imagen, String nombre, List<Pelicula>peliculasSeriesAsociadas) {
+        super();
+        Imagen = imagen;
+        Nombre = nombre;
+        PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
+    }
 
-=======
-	//private Long PeliculasSeriesAsociadas;
->>>>>>> stash
-	
-<<<<<<< HEAD
-=======
-	private List<Pelicula> PeliculasSeriesAsociadas;
-	
->>>>>>> stash
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_genero")
+    private Long IDgenero;
 
-	public Long getIDgenero() {
-		return IDgenero;
-	}
+    private String Imagen;
 
-	public void setIDgenero(Long iDgenero) {
-		IDgenero = iDgenero;
-	}
-
-	
-	public String getImagen() {
-		return Imagen;
-	}
-
-	public void setImagen(String imagen) {
-		Imagen = imagen;
-	}
-
-	public String getNombre() {
-		return Nombre;
-	}
-
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-	
-<<<<<<< HEAD
-=======
-	@OneToMany(cascade= CascadeType.ALL, targetEntity = Pelicula.class)
-	@JoinColumn(name= "id_pelicula", nullable= false)
->>>>>>> stash
-	public List<Pelicula> getPeliculasSeriesAsociadas() {
-		return PeliculasSeriesAsociadas;
-	}
-
-	public void setPeliculasSeriesAsociadas(List<Pelicula> peliculasSeriesAsociadas) {
-		PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
-	}
+    private String Nombre;
 
 
-<<<<<<< HEAD
-=======
+    @OneToMany(mappedBy ="Genero")
+    private List<Pelicula>PeliculasSeriesAsociadas;
 
->>>>>>> stash
+
+
+
+    public Long getIDgenero() {
+        return IDgenero;
+    }
+
+    public void setIDgenero(Long iDgenero) {
+        IDgenero = iDgenero;
+    }
+
+
+    public String getImagen() {
+        return Imagen;
+    }
+
+    public void setImagen(String imagen) {
+        Imagen = imagen;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String nombre) {
+        Nombre = nombre;
+    }
+
+    public List<Pelicula> getPeliculasSeriesAsociadas() {
+        return PeliculasSeriesAsociadas;
+    }
+
+    public void setPeliculasSeriesAsociadas(List<Pelicula> peliculasSeriesAsociadas) {
+        PeliculasSeriesAsociadas = peliculasSeriesAsociadas;
+    }
+
+
 }
