@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Disney.dto.PeliculaDto;
+import com.example.Disney.dto.PeliculaSaveDto;
 import com.example.Disney.dto.PersonajeDto;
 import com.example.Disney.entity.Pelicula;
 import com.example.Disney.entity.Personaje;
@@ -36,7 +37,7 @@ public class PeliculaController {
 	private IPeliculaService peliculaService;
 	
 	@PostMapping
-	public ResponseEntity<?> SavePelicula(@RequestBody PeliculaDto peliculaDto){
+	public ResponseEntity<?> SavePelicula(@RequestBody PeliculaSaveDto peliculaDto){
 		Pelicula pelicula = peliculaService.savePelicula(peliculaDto);
 	return new ResponseEntity<>(pelicula, HttpStatus.ACCEPTED);		
 				
@@ -72,7 +73,7 @@ public class PeliculaController {
 	
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?>updatePelicula(@PathVariable(value= "id") Long id, @RequestBody PeliculaDto peliculaDto){
+	public ResponseEntity<?>updatePelicula(@PathVariable(value= "id") Long id, @RequestBody PeliculaSaveDto peliculaDto){
 		return new ResponseEntity<>(peliculaService.update(id, peliculaDto), HttpStatus.OK);
 		
 	}
@@ -85,4 +86,3 @@ public class PeliculaController {
 	}
 		
 	}
-

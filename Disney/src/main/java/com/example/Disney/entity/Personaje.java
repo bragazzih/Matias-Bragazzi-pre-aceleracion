@@ -66,7 +66,7 @@ public class Personaje implements Serializable {
 	
 	private String Historia;
 	
-	
+
 	@ManyToMany(mappedBy = "PersonajesAsociados")
 	private List<Pelicula>PeliculasAsociadas;
 	

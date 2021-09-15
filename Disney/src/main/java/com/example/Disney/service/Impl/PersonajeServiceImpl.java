@@ -142,8 +142,8 @@ public class PersonajeServiceImpl implements IPersonajeService {
 		
 	} 
 	
+
 	@Override
-	@JsonIgnore
 	public List<Personaje> findByAge( Long age ){
 		List<Personaje> lista = personajeRepository.findAll();
 		

@@ -13,6 +13,7 @@ import com.example.Disney.Builder.PeliculaBuilder;
 import com.example.Disney.dto.PeliculaDto;
 import com.example.Disney.dto.PeliculaGetDto;
 import com.example.Disney.dto.PeliculaPersonajesAsociadosDto;
+import com.example.Disney.dto.PeliculaSaveDto;
 import com.example.Disney.dto.PeliculasPorGeneroDto;
 import com.example.Disney.dto.DetallePeliculaDto;
 import com.example.Disney.entity.Genero;
@@ -27,8 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Repository
 public class PeliculaServiceImpl implements IPeliculaService{
-	
-	
+		
 	@Autowired
 	private PeliculaRepository peliculaRepository;
 	
@@ -38,14 +38,9 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	@Autowired
 	private GeneroRepository generoRepository;
 	
-	
-	
-
 	@Override
-	public Pelicula savePelicula(PeliculaDto peliculaDto) {
-		Pelicula newPelicula= new PeliculaBuilder().withPeliculaDto(peliculaDto).build();
-		newPelicula.setPersonajesAsociados((personajeRepository.findAll()));
-		newPelicula.setGenero(peliculaDto.getGenero());
+	public Pelicula savePelicula(PeliculaSaveDto peliculaDto) {
+		Pelicula newPelicula= new PeliculaBuilder().withPeliculaSaveDto(peliculaDto).build();
 		return peliculaRepository.save(newPelicula);
 	}
 
@@ -100,15 +95,19 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	
 
 	@Override
-	public Pelicula update(Long id, PeliculaDto peliculaDto) {
+	@JsonIgnore
+	public Pelicula update(Long id, PeliculaSaveDto peliculaDto) {
 		Pelicula pelicula = peliculaRepository.findById(id).get();
-		List<Personaje> personaje = personajeRepository.findAll();
+		//List<Personaje> personaje = personajeRepository.findAll();
 		pelicula.setImagen (peliculaDto.getImagen());
 		pelicula.setTitulo(peliculaDto.getTitulo());
-		pelicula.setPersonajesAsociados(personaje);
+		//pelicula.setPersonajesAsociados(personaje);
 		pelicula.setCalificacion(peliculaDto.getCalificacion());
 		pelicula.setFechaCreacion(peliculaDto.getFechaCreacion());
-		pelicula.setGenero(peliculaDto.getGenero());
+		Genero gen = new Genero();
+		gen.setIDgenero(peliculaDto.getIdGenero());
+		pelicula.setGenero(gen); 
+		pelicula.setPersonajesAsociados(null);
 		return peliculaRepository.save(pelicula);
 
 		
@@ -133,6 +132,7 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	public List<PeliculasPorGeneroDto> findByGenreId( Long genre ){
         List<Pelicula> lista = peliculaRepository.findAll();      
         ArrayList<PeliculasPorGeneroDto> lstPeliculasPorGeneroDto = new ArrayList <PeliculasPorGeneroDto>();
+        
         for (Pelicula varPelicula : lista) {
         	if(varPelicula.getGenero().getIDgenero() == genre) {
         	  PeliculasPorGeneroDto pelPorGenDto = new PeliculasPorGeneroDto();
@@ -141,12 +141,8 @@ public class PeliculaServiceImpl implements IPeliculaService{
         	  pelPorGenDto.setCalificacion(varPelicula.getCalificacion());
         	  pelPorGenDto.setFechaCreacion(varPelicula.getFechaCreacion());
         	  pelPorGenDto.setGenero(varPelicula.getGenero());
-        		
-        		lstPeliculasPorGeneroDto.add(pelPorGenDto);
-        		
-        		
-        		
-        		
+        	
+        	  lstPeliculasPorGeneroDto.add(pelPorGenDto);
         		
         	}
          
@@ -187,4 +183,3 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	
 	
 }
-
